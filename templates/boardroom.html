@@ -15,176 +15,171 @@
 <div class="dashboard">
 
     <!-- SIDEBAR -->
-
     <aside class="sidebar">
 
         <h2>AI Boardroom</h2>
 
         <ul>
-
-            <li>
-                <a href="/dashboard">📊 Dashboard</a>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/digital-twin">Digital Twin</a></li>
+            <li class="active">
+                <a href="/boardroom">AI Boardroom</a>
             </li>
-
-            <li>
-                <a href="/digital-twin">🏢 Digital Twin</a>
-            </li>
-
-            <li>
-                <a href="/boardroom">🤖 AI Boardroom</a>
-            </li>
-
-            <li>
-                <a href="/debate">💬 Debate</a>
-            </li>
-
-            <li>
-                <a href="/analytics">📈 Analytics</a>
-            </li>
-
-            <li>
-                <a href="/reports">📄 Reports</a>
-            </li>
-
-            <li>
-                <a href="/settings">⚙️ Settings</a>
-            </li>
-
+            <li><a href="/debate">Debate</a></li>
+            <li><a href="/analytics">Analytics</a></li>
+            <li><a href="/reports">Reports</a></li>
+            <li><a href="/settings">Settings</a></li>
         </ul>
 
     </aside>
 
 
     <!-- MAIN CONTENT -->
-
     <main class="content">
 
-        <h1>AI Boardroom</h1>
+        <div class="boardroom-header">
 
-        <p class="page-description">
-            Meet your AI executive team and make smarter business decisions.
-        </p>
+            <div>
+                <p class="small-title">INTELLIGENT DECISION SYSTEM</p>
+
+                <h1>AI Boardroom</h1>
+
+                <p class="subtitle">
+                    Meet your AI executive team and make smarter
+                    business decisions.
+                </p>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                AI SYSTEM ONLINE
+            </div>
+
+        </div>
 
 
-        <!-- AI AGENTS -->
+        <!-- AGENTS -->
 
-        <div class="boardroom">
-
+        <div class="boardroom-grid">
 
             <!-- CEO -->
+            <div class="agent-card">
 
-            <div class="agent">
+                <div class="agent-icon">👔</div>
 
-                <img
-                    src="{{ url_for('static', filename='images/ceo.png') }}"
-                    class="agent-image"
-                    alt="CEO">
+                <div class="agent-status">
+                    ● ONLINE
+                </div>
 
-                <h2>👔 CEO</h2>
+                <h2>CEO</h2>
+
+                <h4>Chief Executive Officer</h4>
 
                 <p>
-                    Strategic decision maker responsible
-                    for overall business growth.
+                    Focuses on overall business strategy,
+                    growth and major decisions.
                 </p>
 
-                <button>
-                    Start Debate
-                </button>
+                <a href="/debate" class="debate-btn">
+                    Start Debate →
+                </a>
 
             </div>
 
 
             <!-- CFO -->
+            <div class="agent-card">
 
-            <div class="agent">
+                <div class="agent-icon">💰</div>
 
-                <img
-                    src="{{ url_for('static', filename='images/cfo.png') }}"
-                    class="agent-image"
-                    alt="CFO">
+                <div class="agent-status">
+                    ● ONLINE
+                </div>
 
-                <h2>💰 CFO</h2>
+                <h2>CFO</h2>
+
+                <h4>Chief Financial Officer</h4>
 
                 <p>
                     Analyzes financial performance,
-                    costs and profitability.
+                    costs, revenue and profitability.
                 </p>
 
-                <button>
-                    Start Debate
-                </button>
+                <a href="/debate" class="debate-btn">
+                    Start Debate →
+                </a>
 
             </div>
 
 
-            <!-- SALES -->
+            <!-- SALES HEAD -->
+            <div class="agent-card">
 
-            <div class="agent">
+                <div class="agent-icon">📈</div>
 
-                <img
-                    src="{{ url_for('static', filename='images/sales.png') }}"
-                    class="agent-image"
-                    alt="Sales Head">
+                <div class="agent-status">
+                    ● ONLINE
+                </div>
 
-                <h2>📈 Sales Head</h2>
+                <h2>Sales Head</h2>
+
+                <h4>Chief Sales Officer</h4>
 
                 <p>
                     Analyzes sales trends, customers
-                    and future revenue.
+                    and revenue growth.
                 </p>
 
-                <button>
-                    Start Debate
-                </button>
+                <a href="/debate" class="debate-btn">
+                    Start Debate →
+                </a>
 
             </div>
 
 
-            <!-- HR -->
+            <!-- HR HEAD -->
+            <div class="agent-card">
 
-            <div class="agent">
+                <div class="agent-icon">👥</div>
 
-                <img
-                    src="{{ url_for('static', filename='images/hr.png') }}"
-                    class="agent-image"
-                    alt="HR Head">
+                <div class="agent-status">
+                    ● ONLINE
+                </div>
 
-                <h2>👥 HR Head</h2>
+                <h2>HR Head</h2>
+
+                <h4>Chief People Officer</h4>
 
                 <p>
                     Analyzes employees, workforce
                     and organizational performance.
                 </p>
 
-                <button>
-                    Start Debate
-                </button>
+                <a href="/debate" class="debate-btn">
+                    Start Debate →
+                </a>
 
             </div>
 
+        </div>
 
-            <!-- RISK -->
 
-            <div class="agent">
+        <!-- BOARDROOM ACTION -->
 
-                <img
-                    src="{{ url_for('static', filename='images/risk.png') }}"
-                    class="agent-image"
-                    alt="Risk Manager">
+        <div class="boardroom-action">
 
-                <h2>⚠️ Risk Manager</h2>
+            <div>
+                <h2>Ready to make a decision?</h2>
 
                 <p>
-                    Identifies business risks and
-                    recommends mitigation strategies.
+                    Bring your AI executives together
+                    and start a strategic debate.
                 </p>
-
-                <button>
-                    Start Debate
-                </button>
-
             </div>
 
+            <a href="/debate" class="main-debate-btn">
+                Start Boardroom Debate
+            </a>
 
         </div>
 

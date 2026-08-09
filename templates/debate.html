@@ -1,83 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Debate Room</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Debate | AI Boardroom</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
+
 <body>
 
 <div class="dashboard">
+
+    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
         <h2>AI Boardroom</h2>
 
         <ul>
-            <li>🏠 Dashboard</li>
-            <li>🏢 Digital Twin</li>
-            <li>🤖 AI Boardroom</li>
-            <li>🗣 Debate</li>
-            <li>📊 Analytics</li>
-            <li>📄 Reports</li>
-            <li>⚙ Settings</li>
+
+            <li>
+                <a href="/dashboard">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/digital-twin">Digital Twin</a>
+            </li>
+
+            <li>
+                <a href="/boardroom">AI Boardroom</a>
+            </li>
+
+            <li class="active">
+                <a href="/debate">Debate</a>
+            </li>
+
+            <li>
+                <a href="/analytics">Analytics</a>
+            </li>
+
+            <li>
+                <a href="/reports">Reports</a>
+            </li>
+
+            <li>
+                <a href="/settings">Settings</a>
+            </li>
+
         </ul>
 
     </aside>
 
+
+    <!-- MAIN CONTENT -->
+
     <main class="content">
 
-        <h1>Autonomous AI Debate</h1>
+        <!-- HEADER -->
 
-        <div class="question-box">
-            <h3>Business Question</h3>
-            <input type="text" placeholder="Should we launch Product X?">
-            <button>Start Debate</button>
-        </div>
+        <div class="debate-header">
 
-        <div class="chat-box">
+            <div>
 
-            <div class="message ceo">
-                <strong>👔 CEO:</strong>
-                Launching the product will increase market share.
+                <p class="small-title">
+                    AI DECISION ENGINE
+                </p>
+
+                <h1>Boardroom Debate</h1>
+
+                <p class="subtitle">
+                    Ask a business question and let your AI
+                    executives analyze it from different perspectives.
+                </p>
+
             </div>
 
-            <div class="message cfo">
-                <strong>💰 CFO:</strong>
-                The investment is high. We should control costs.
-            </div>
-
-            <div class="message sales">
-                <strong>📈 Sales:</strong>
-                Customer demand is expected to be strong.
-            </div>
-
-            <div class="message hr">
-                <strong>👥 HR:</strong>
-                We need to recruit 15 employees.
-            </div>
-
-            <div class="message risk">
-                <strong>⚠ Risk:</strong>
-                Competitors are already entering the market.
+            <div class="status">
+                <span class="status-dot"></span>
+                BOARDROOM READY
             </div>
 
         </div>
 
-        <div class="final-decision">
-            <h2>🧠 Final AI Recommendation</h2>
+
+        <!-- QUESTION -->
+
+        <div class="question-card">
+
+            <h2>What decision should the board discuss?</h2>
 
             <p>
-                Launch the product in one city first,
-                monitor sales for 3 months,
-                then expand gradually.
+                Enter a business question for the AI executives.
             </p>
+
+            <textarea
+                id="question"
+                placeholder="Example: Should we increase our marketing budget by 20%?"
+            ></textarea>
+
+            <button
+                class="start-debate-btn"
+                onclick="startDebate()">
+
+                Start AI Debate →
+
+            </button>
+
+        </div>
+
+
+        <!-- EXECUTIVE OPINIONS -->
+
+        <h2 class="section-title">
+            Executive Opinions
+        </h2>
+
+
+        <div class="debate-grid">
+
+
+            <!-- CEO -->
+
+            <div class="debate-card">
+
+                <div class="debate-icon">
+                    👔
+                </div>
+
+                <div>
+
+                    <h3>CEO</h3>
+
+                    <span>Strategy</span>
+
+                </div>
+
+                <p id="ceo-opinion">
+                    Waiting for the business question...
+                </p>
+
+            </div>
+
+
+            <!-- CFO -->
+
+            <div class="debate-card">
+
+                <div class="debate-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <h3>CFO</h3>
+
+                    <span>Finance</span>
+
+                </div>
+
+                <p id="cfo-opinion">
+                    Waiting for the business question...
+                </p>
+
+            </div>
+
+
+            <!-- SALES -->
+
+            <div class="debate-card">
+
+                <div class="debate-icon">
+                    📈
+                </div>
+
+                <div>
+
+                    <h3>Sales Head</h3>
+
+                    <span>Revenue</span>
+
+                </div>
+
+                <p id="sales-opinion">
+                    Waiting for the business question...
+                </p>
+
+            </div>
+
+
+            <!-- HR -->
+
+            <div class="debate-card">
+
+                <div class="debate-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <h3>HR Head</h3>
+
+                    <span>People</span>
+
+                </div>
+
+                <p id="hr-opinion">
+                    Waiting for the business question...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FINAL DECISION -->
+
+        <div class="final-decision">
+
+            <div>
+
+                <p class="small-title">
+                    BOARD RECOMMENDATION
+                </p>
+
+                <h2>Final Decision</h2>
+
+                <p id="final-result">
+                    The board is waiting for the debate to begin.
+                </p>
+
+            </div>
+
         </div>
 
     </main>
 
 </div>
 
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 </body>
+
 </html>

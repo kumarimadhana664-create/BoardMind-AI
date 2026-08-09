@@ -1,35 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | AI Boardroom</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | BoardMind-AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
 <div class="login-container">
 
     <div class="login-box">
 
-        <h1>AI Boardroom</h1>
-        <p>Sign in to continue</p>
+        <div class="login-logo">
+            🤖
+        </div>
 
-        <form>
+        <h1>BoardMind-AI</h1>
 
-            <input type="email" placeholder="Email Address" required>
+        <p class="login-subtitle">
+            Intelligent Business Decision System
+        </p>
 
-            <input type="password" placeholder="Password" required>
 
-            <button type="submit">Login</button>
+        <form method="POST" action="/login">
+
+            <div class="login-field">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="login-field">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+            {% if error %}
+
+            <p class="login-error">
+                {{ error }}
+            </p>
+
+            {% endif %}
+
+
+            <button
+                type="submit"
+                class="login-btn">
+
+                Login →
+
+            </button>
 
         </form>
 
-        <a href="#">Forgot Password?</a>
+
+        <p class="login-footer">
+            AI-powered business intelligence
+        </p>
 
     </div>
 
 </div>
 
 </body>
+
 </html>

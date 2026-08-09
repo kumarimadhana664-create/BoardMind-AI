@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, render_template
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import pandas as pd
 import joblib
 
@@ -53,6 +54,34 @@ def predict_sales():
         "predicted_sales": round(float(prediction[0]), 2)
     })
 
+@app.route("/boardroom")
+def boardroom():
+    return render_template("boardroom.html")
+
+
+@app.route("/debate")
+def debate():
+    return render_template("debate.html")
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+
+    if request.method == "POST":
+
+        email = request.form["email"]
+        password = request.form["password"]
+
+        # Temporary login
+        if email == "admin@gmail.com" and password == "admin123":
+
+            return redirect(url_for("dashboard"))
+
+        return render_template(
+            "login.html",
+            error="Invalid email or password"
+        )
+
+    return render_template("login.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

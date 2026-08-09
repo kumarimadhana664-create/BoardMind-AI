@@ -1,145 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Dashboard | AI Boardroom</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
+
 
 <body>
 
 <div class="dashboard">
 
-    <!-- SIDEBAR -->
+
+    <!-- =========================================
+         SIDEBAR
+         ========================================= -->
+
     <aside class="sidebar">
 
         <h2>AI Boardroom</h2>
 
         <ul>
-            <li><a href="/dashboard">🏠 Dashboard</a></li>
-            <li><a href="/digital-twin">🏢 Digital Twin</a></li>
-            <li><a href="/boardroom">🤖 AI Boardroom</a></li>
-            <li><a href="/debate">🗣 Debate</a></li>
-            <li><a href="/analytics">📊 Analytics</a></li>
-            <li><a href="/reports">📄 Reports</a></li>
-            <li><a href="/settings">⚙ Settings</a></li>
+
+            <!-- ACTIVE PAGE -->
+            <li class="active">
+                <a href="/dashboard">
+                     Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/digital-twin">
+                     Digital Twin
+                </a>
+            </li>
+
+            <li>
+                <a href="/boardroom">
+                     AI Boardroom
+                </a>
+            </li>
+
+            <li>
+                <a href="/debate">
+                     Debate
+                </a>
+            </li>
+
+            <li>
+                <a href="/analytics">
+                     Analytics
+                </a>
+            </li>
+
+            <li>
+                <a href="/reports">
+                     Reports
+                </a>
+            </li>
+
+            <li>
+                <a href="/settings">
+                     Settings
+                </a>
+            </li>
+
         </ul>
 
     </aside>
 
 
-    <!-- MAIN CONTENT -->
+
+    <!-- =========================================
+         MAIN CONTENT
+         ========================================= -->
+
     <main class="content">
 
-        <h1>Business Dashboard</h1>
 
-        <!-- BUSINESS CARDS -->
-        <div class="cards">
+        <!-- PAGE HEADER -->
 
-            <div class="card">
-                <h3>Revenue</h3>
-                <h2>{{data.revenue}}</h2>
+        <div class="dashboard-header">
+
+            <div>
+
+                <p class="small-title">
+                    BUSINESS INTELLIGENCE
+                </p>
+
+                <h1>Business Dashboard</h1>
+
+                <p class="subtitle">
+                    Monitor your business performance and predict
+                    future sales using AI.
+                </p>
+
             </div>
 
-            <div class="card">
-                <h3>Profit</h3>
-                <h2>{{data.profit}}</h2>
-            </div>
+            <div class="status">
 
-            <div class="card">
-                <h3>Sales</h3>
-                <h2>{{data.sales}}</h2>
-            </div>
+                <span class="status-dot"></span>
 
-            <div class="card">
-                <h3>Employees</h3>
-                <h2>{{data.employees}}</h2>
-            </div>
+                AI SYSTEM ONLINE
 
-            <div class="card">
-                <h3>Inventory</h3>
-                <h2>{{data.inventory}}</h2>
-            </div>
-
-            <div class="card">
-                <h3>Risk Score</h3>
-                <h2>{{data.risk_score}}</h2>
             </div>
 
         </div>
 
 
-        <!-- SALES PREDICTION -->
+
+        <!-- =========================================
+             BUSINESS CARDS
+             ========================================= -->
+
+        <div class="cards">
+
+
+            <!-- REVENUE -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    💰
+                </div>
+
+                <h3>Revenue</h3>
+
+                <h2>
+                    {{ data.revenue }}
+                </h2>
+
+            </div>
+
+
+
+            <!-- PROFIT -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📈
+                </div>
+
+                <h3>Profit</h3>
+
+                <h2>
+                    {{ data.profit }}
+                </h2>
+
+            </div>
+
+
+
+            <!-- SALES -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🛒
+                </div>
+
+                <h3>Sales</h3>
+
+                <h2>
+                    {{ data.sales }}
+                </h2>
+
+            </div>
+
+
+
+            <!-- EMPLOYEES -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    👥
+                </div>
+
+                <h3>Employees</h3>
+
+                <h2>
+                    {{ data.employees }}
+                </h2>
+
+            </div>
+
+
+
+            <!-- INVENTORY -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📦
+                </div>
+
+                <h3>Inventory</h3>
+
+                <h2>
+                    {{ data.inventory }}
+                </h2>
+
+            </div>
+
+
+
+            <!-- RISK -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    ⚠️
+                </div>
+
+                <h3>Risk Score</h3>
+
+                <h2>
+                    {{ data.risk_score }}
+                </h2>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             SALES PREDICTION
+             ========================================= -->
+
         <div class="prediction-box">
 
-            <h2>📈 Sales Prediction</h2>
 
-            <label>Age</label>
-            <input
-                type="number"
-                id="age"
-                placeholder="Enter age"
-            >
+            <div class="prediction-header">
 
-            <label>Gender</label>
-            <select id="gender">
+                <div>
 
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+                    <p class="small-title">
+                        MACHINE LEARNING
+                    </p>
 
-            </select>
+                    <h2>
+                        📈 Sales Prediction
+                    </h2>
 
+                    <p>
+                        Enter customer and product information
+                        to predict sales.
+                    </p>
 
-            <label>Product Category</label>
+                </div>
 
-            <select id="category">
-
-                <option value="Beauty">Beauty</option>
-                <option value="Clothing">Clothing</option>
-                <option value="Electronics">Electronics</option>
-
-            </select>
+            </div>
 
 
-            <label>Quantity</label>
 
-            <input
-                type="number"
-                id="quantity"
-                placeholder="Enter quantity"
-            >
+            <!-- AGE -->
+
+            <div class="form-group">
+
+                <label for="age">
+                    Age
+                </label>
+
+                <input
+                    type="number"
+                    id="age"
+                    placeholder="Enter age"
+                >
+
+            </div>
 
 
-            <label>Price Per Unit</label>
 
-            <input
-                type="number"
-                id="price"
-                placeholder="Enter price"
-            >
+            <!-- GENDER -->
+
+            <div class="form-group">
+
+                <label for="gender">
+                    Gender
+                </label>
+
+                <select id="gender">
+
+                    <option value="Male">
+                        Male
+                    </option>
+
+                    <option value="Female">
+                        Female
+                    </option>
+
+                </select>
+
+            </div>
 
 
-            <button onclick="predictSales()">
-                 Predict Sales
+
+            <!-- PRODUCT CATEGORY -->
+
+            <div class="form-group">
+
+                <label for="category">
+                    Product Category
+                </label>
+
+                <select id="category">
+
+                    <option value="Beauty">
+                        Beauty
+                    </option>
+
+                    <option value="Clothing">
+                        Clothing
+                    </option>
+
+                    <option value="Electronics">
+                        Electronics
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- QUANTITY -->
+
+            <div class="form-group">
+
+                <label for="quantity">
+                    Quantity
+                </label>
+
+                <input
+                    type="number"
+                    id="quantity"
+                    placeholder="Enter quantity"
+                >
+
+            </div>
+
+
+
+            <!-- PRICE -->
+
+            <div class="form-group">
+
+                <label for="price">
+                    Price Per Unit
+                </label>
+
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="Enter price"
+                >
+
+            </div>
+
+
+
+            <!-- PREDICT BUTTON -->
+
+            <button
+                type="button"
+                class="predict-btn"
+                onclick="predictSales()">
+
+                📊 Predict Sales
+
             </button>
 
 
-            <h3 id="result"
-            placeholder="Predicted Sales will appear here"></h3>
+
+            <!-- RESULT -->
+
+            <div class="prediction-result">
+
+                <p>
+                    Predicted Sales
+                </p>
+
+                <h2 id="result">
+                    —
+                </h2>
+
+            </div>
+
 
         </div>
+
 
     </main>
 
 </div>
 
 
-<!-- JAVASCRIPT -->
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
+
+<script>
+
+async function predictSales() {
+
+    const age =
+        document.getElementById("age").value;
+
+    const gender =
+        document.getElementById("gender").value;
+
+    const category =
+        document.getElementById("category").value;
+
+    const quantity =
+        document.getElementById("quantity").value;
+
+    const price =
+        document.getElementById("price").value;
+
+
+    /* CHECK INPUTS */
+
+    if (
+        age === "" ||
+        quantity === "" ||
+        price === ""
+    ) {
+
+        document.getElementById("result").innerText =
+            "Please fill all fields.";
+
+        return;
+
+    }
+
+
+    /* SHOW LOADING */
+
+    document.getElementById("result").innerText =
+        "Predicting...";
+
+
+    try {
+
+        const response = await fetch(
+            "/predict-sales",
+            {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    Age: Number(age),
+
+                    Gender: gender,
+
+                    "Product Category": category,
+
+                    Quantity: Number(quantity),
+
+                    "Price per Unit": Number(price)
+
+                })
+
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error || "Prediction failed"
+            );
+
+        }
+
+
+        /* SHOW RESULT */
+
+        document.getElementById("result").innerText =
+            "₹" + Number(
+                data.predicted_sales
+            ).toLocaleString("en-IN");
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        document.getElementById("result").innerText =
+            "Prediction failed";
+
+    }
+
+}
+
+</script>
+
 
 </body>
+
 </html>

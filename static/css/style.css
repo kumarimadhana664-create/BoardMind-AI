@@ -1152,3 +1152,743 @@ tr:hover {
         padding: 22px;
     }
 }
+/* =====================================================
+   AI BOARDROOM
+   WHITE + BURGUNDY THEME
+   ===================================================== */
+
+.boardroom-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 35px;
+}
+
+.small-title {
+    color: #800020;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.boardroom-header h1 {
+    color: #3b2026;
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #75686b;
+    font-size: 15px;
+}
+
+.status {
+    background: #f7edf0;
+    color: #800020;
+
+    padding: 10px 16px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-dot {
+    display: inline-block;
+
+    width: 8px;
+    height: 8px;
+
+    background: #2e9d62;
+
+    border-radius: 50%;
+
+    margin-right: 6px;
+}
+
+
+/* AGENT GRID */
+
+.boardroom-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+
+    max-width: 1000px;
+}
+
+
+/* AGENT CARD */
+
+.agent-card {
+    position: relative;
+
+    background: white;
+
+    border: 1px solid #eadde1;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px rgba(80, 20, 35, 0.08);
+
+    transition: 0.3s;
+}
+
+.agent-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #800020;
+
+    box-shadow: 0 15px 35px rgba(128, 0, 32, 0.15);
+}
+
+
+/* ICON */
+
+.agent-icon {
+    width: 75px;
+    height: 75px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #f8edf0;
+
+    border: 2px solid #800020;
+
+    border-radius: 50%;
+
+    font-size: 32px;
+}
+
+
+/* ONLINE */
+
+.agent-status {
+    color: #2e9d62;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+
+.agent-card h2 {
+    color: #800020;
+
+    font-size: 24px;
+
+    margin-bottom: 5px;
+}
+
+
+.agent-card h4 {
+    color: #75686b;
+
+    font-size: 13px;
+
+    margin-bottom: 15px;
+}
+
+
+.agent-card p {
+    color: #5f5558;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+
+    min-height: 45px;
+}
+
+
+/* DEBATE BUTTON */
+
+.debate-btn {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 11px 25px;
+
+    background: #800020;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.debate-btn:hover {
+    background: #5c0018;
+
+    transform: translateY(-2px);
+}
+
+
+/* BOTTOM BOARDROOM ACTION */
+
+.boardroom-action {
+    margin-top: 35px;
+
+    max-width: 1000px;
+
+    padding: 25px 30px;
+
+    background: #800020;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color: white;
+}
+
+
+.boardroom-action h2 {
+    margin-bottom: 7px;
+
+    font-size: 20px;
+}
+
+
+.boardroom-action p {
+    color: #f5dfe5;
+
+    font-size: 14px;
+}
+
+
+.main-debate-btn {
+    background: white;
+
+    color: #800020;
+
+    padding: 13px 22px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+
+.main-debate-btn:hover {
+    background: #f7edf0;
+
+    transform: translateY(-2px);
+}
+
+
+/* SIDEBAR LINKS */
+
+.sidebar a {
+    color: inherit;
+
+    text-decoration: none;
+
+    display: block;
+}
+
+.sidebar li.active {
+    background: #800020;
+}
+
+.sidebar li.active a {
+    color: white;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .boardroom-header {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .boardroom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .boardroom-action {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+}
+/* =====================================================
+   AI DEBATE PAGE
+   ===================================================== */
+
+.debate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.debate-header h1 {
+    color: #3b2026;
+
+    font-size: 36px;
+
+    margin-bottom: 8px;
+}
+
+
+/* QUESTION CARD */
+
+.question-card {
+    background: white;
+
+    border: 1px solid #eadde1;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    max-width: 1000px;
+
+    box-shadow:
+        0 8px 25px rgba(80, 20, 35, 0.08);
+}
+
+.question-card h2 {
+    color: #3b2026;
+
+    margin-bottom: 8px;
+}
+
+.question-card p {
+    color: #75686b;
+
+    margin-bottom: 20px;
+}
+
+
+.question-card textarea {
+    width: 100%;
+
+    min-height: 110px;
+
+    resize: vertical;
+
+    padding: 15px;
+
+    border: 1px solid #ddcbd1;
+
+    border-radius: 10px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.question-card textarea:focus {
+    border-color: #800020;
+
+    box-shadow:
+        0 0 0 3px rgba(128, 0, 32, 0.08);
+}
+
+
+/* START DEBATE BUTTON */
+
+.start-debate-btn {
+    background: #800020;
+
+    color: white;
+
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    margin-top: 20px;
+
+    transition: 0.3s;
+}
+
+.start-debate-btn:hover {
+    background: #5c0018;
+
+    transform: translateY(-2px);
+}
+
+
+/* SECTION */
+
+.section-title {
+    color: #3b2026;
+
+    margin: 35px 0 20px;
+}
+
+
+/* DEBATE GRID */
+
+.debate-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+
+    max-width: 1000px;
+}
+
+
+/* DEBATE CARD */
+
+.debate-card {
+    background: white;
+
+    border: 1px solid #eadde1;
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 6px 20px rgba(80, 20, 35, 0.06);
+
+    transition: 0.3s;
+}
+
+.debate-card:hover {
+    border-color: #800020;
+
+    transform: translateY(-3px);
+}
+
+
+/* ICON */
+
+.debate-icon {
+    width: 55px;
+    height: 55px;
+
+    background: #f8edf0;
+
+    border: 2px solid #800020;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+}
+
+
+.debate-card h3 {
+    color: #800020;
+
+    margin-bottom: 4px;
+}
+
+.debate-card span {
+    color: #9b777f;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.debate-card p {
+    color: #5f5558;
+
+    line-height: 1.6;
+
+    margin-top: 15px;
+}
+
+
+/* FINAL DECISION */
+
+.final-decision {
+    max-width: 1000px;
+
+    margin-top: 30px;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    background: #800020;
+
+    color: white;
+
+    box-shadow:
+        0 10px 30px rgba(128, 0, 32, 0.18);
+}
+
+.final-decision .small-title {
+    color: #f5dfe5;
+}
+
+.final-decision h2 {
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+.final-decision p {
+    color: #f5dfe5;
+
+    line-height: 1.6;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .debate-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .debate-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =========================================
+   LOGIN PAGE
+   ========================================= */
+
+.login-container {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8fa,
+            #ffffff
+        );
+}
+
+
+.login-box {
+    width: 420px;
+
+    background: #ffffff;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    border: 1px solid #eadde1;
+
+    box-shadow:
+        0 15px 45px rgba(80, 20, 35, 0.12);
+
+    text-align: center;
+}
+
+
+/* LOGO */
+
+.login-logo {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #800020;
+
+    color: white;
+
+    border-radius: 18px;
+
+    font-size: 30px;
+}
+
+
+.login-box h1 {
+    color: #800020;
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+
+.login-subtitle {
+    color: #75686b;
+
+    font-size: 14px;
+
+    margin-bottom: 30px;
+}
+
+
+/* INPUT */
+
+.login-field {
+    text-align: left;
+
+    margin-bottom: 20px;
+}
+
+
+.login-field label {
+    display: block;
+
+    color: #3b2026;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+
+.login-field input {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #ddcbd1;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+.login-field input:focus {
+    border-color: #800020;
+
+    box-shadow:
+        0 0 0 3px rgba(128, 0, 32, 0.08);
+}
+
+
+/* LOGIN BUTTON */
+
+.login-btn {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #800020;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.login-btn:hover {
+    background: #5c0018;
+
+    transform: translateY(-2px);
+}
+
+
+/* ERROR */
+
+.login-error {
+    color: #c62828;
+
+    background: #fff0f0;
+
+    padding: 10px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    margin-bottom: 15px;
+}
+
+
+/* FOOTER */
+
+.login-footer {
+    margin-top: 25px;
+
+    color: #9b777f;
+
+    font-size: 12px;
+}
