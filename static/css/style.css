@@ -1,0 +1,1154 @@
+/* =========================================================
+   AI BOARDROOM - WHITE + BURGUNDY THEME
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --burgundy: #800020;
+    --burgundy-dark: #5c0018;
+    --burgundy-light: #a52a46;
+
+    --bg: #f8f6f6;
+    --white: #ffffff;
+
+    --text: #24191c;
+    --muted: #75686b;
+    --border: #eadfe2;
+
+    --green: #198754;
+    --orange: #d97706;
+    --red: #dc3545;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+input,
+select,
+textarea {
+    font-family: inherit;
+    outline: none;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 50px;
+
+    background: var(--white);
+
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo h2 {
+    color: var(--burgundy);
+    font-weight: 800;
+}
+
+nav a {
+    color: #4b3b3f;
+    margin-left: 28px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--burgundy);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    min-height: 85vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 40px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f8f1f3
+        );
+}
+
+.hero h1 {
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin-bottom: 20px;
+
+    color: var(--burgundy);
+}
+
+.hero h3 {
+    color: var(--burgundy-light);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 750px;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+button {
+    margin-top: 20px;
+
+    padding: 13px 26px;
+
+    background: var(--burgundy);
+
+    color: white;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    box-shadow:
+        0 6px 18px rgba(128, 0, 32, 0.18);
+}
+
+button:hover {
+    background: var(--burgundy-dark);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 22px rgba(128, 0, 32, 0.25);
+}
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+.login-container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f8f1f3
+        );
+}
+
+.login-box {
+    width: 420px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 40px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 50px rgba(80, 0, 20, 0.10);
+}
+
+.login-box h1 {
+    color: var(--burgundy);
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+.login-box input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    margin-bottom: 15px;
+
+    background: #fff;
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+}
+
+.login-box input:focus {
+    border-color: var(--burgundy);
+
+    box-shadow:
+        0 0 0 3px rgba(128, 0, 32, 0.08);
+}
+
+.login-box button {
+    width: 100%;
+}
+
+.login-box a {
+    display: block;
+
+    margin-top: 20px;
+
+    color: var(--burgundy);
+}
+
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    width: 260px;
+    min-height: 100vh;
+
+    background: var(--white);
+
+    border-right: 1px solid var(--border);
+
+    padding: 28px 18px;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar h2 {
+    color: var(--burgundy);
+
+    font-size: 22px;
+
+    padding: 0 14px 30px;
+
+    font-weight: 800;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin-bottom: 7px;
+}
+
+.sidebar li a {
+    display: block;
+
+    padding: 13px 15px;
+
+    border-radius: 9px;
+
+    color: #6d5d61;
+
+    font-size: 14px;
+
+    transition: 0.25s;
+}
+
+.sidebar li a:hover {
+    background: #f8e9ed;
+
+    color: var(--burgundy);
+
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.content {
+    margin-left: 260px;
+
+    flex: 1;
+
+    padding: 40px;
+
+    min-height: 100vh;
+
+    background: #faf8f8;
+}
+
+.content h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+
+    color: #2b2023;
+}
+
+.content h1::after {
+    content: "AI-powered business intelligence";
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    font-weight: 400;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   BUSINESS CARDS
+   ========================================================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(180px, 1fr));
+
+    gap: 20px;
+
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 24px;
+
+    border-radius: 14px;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 5px 18px rgba(60, 20, 30, 0.05);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+
+    border-color: #d7a9b5;
+
+    box-shadow:
+        0 12px 30px rgba(80, 0, 20, 0.10);
+}
+
+.card h3 {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    margin-bottom: 12px;
+}
+
+.card h2 {
+    color: var(--burgundy);
+
+    font-size: 26px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SALES PREDICTION
+   ========================================================= */
+
+.prediction-box {
+    margin-top: 30px;
+
+    max-width: 850px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 30px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 30px rgba(60, 20, 30, 0.06);
+
+    position: relative;
+}
+
+.prediction-box::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 4px;
+    height: 100%;
+
+    border-radius: 10px 0 0 10px;
+
+    background: var(--burgundy);
+}
+
+.prediction-box h2 {
+    font-size: 21px;
+
+    margin-bottom: 25px;
+
+    color: var(--burgundy);
+}
+
+.prediction-box label {
+    display: block;
+
+    color: #4e4144;
+
+    font-size: 13px;
+
+    margin-bottom: 7px;
+}
+
+.prediction-box input,
+.prediction-box select {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    margin-bottom: 18px;
+
+    background: white;
+
+    color: var(--text);
+
+    border: 1px solid #ddd1d5;
+
+    border-radius: 9px;
+}
+
+.prediction-box input:focus,
+.prediction-box select:focus {
+    border-color: var(--burgundy);
+
+    box-shadow:
+        0 0 0 3px rgba(128, 0, 32, 0.08);
+}
+
+.prediction-box button {
+    width: 100%;
+
+    margin-top: 5px;
+}
+
+#result {
+    margin-top: 25px;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    background: #f4faf6;
+
+    border: 1px solid #cce8d7;
+
+    color: var(--green);
+
+    text-align: center;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   DIGITAL TWIN
+   ========================================================= */
+
+.twin-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.department {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    transition: 0.3s;
+}
+
+.department:hover {
+    transform: translateY(-5px);
+
+    border-color: #d7a9b5;
+
+    box-shadow:
+        0 12px 30px rgba(80, 0, 20, 0.08);
+}
+
+.department h2 {
+    color: var(--burgundy);
+
+    margin-bottom: 15px;
+}
+
+.department p {
+    color: #5e5155;
+
+    margin: 10px 0;
+}
+
+
+/* =========================================================
+   AI BOARDROOM
+   ========================================================= */
+
+.boardroom {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.agent {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 28px;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.agent:hover {
+    transform: translateY(-5px);
+
+    border-color: #d7a9b5;
+
+    box-shadow:
+        0 12px 35px rgba(128, 0, 32, 0.10);
+}
+
+.agent h2 {
+    color: var(--burgundy);
+
+    margin-bottom: 12px;
+}
+
+.agent p {
+    color: var(--muted);
+
+    line-height: 1.6;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   DEBATE
+   ========================================================= */
+
+.question-box {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    margin-bottom: 25px;
+}
+
+.question-box input {
+    width: 80%;
+
+    padding: 13px;
+
+    background: white;
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+}
+
+.chat-box {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 22px;
+
+    border-radius: 15px;
+}
+
+.message {
+    padding: 16px;
+
+    margin-bottom: 14px;
+
+    border-radius: 10px;
+
+    line-height: 1.6;
+}
+
+.ceo {
+    background: #f8e9ed;
+    border-left: 4px solid #800020;
+}
+
+.cfo {
+    background: #edf8f1;
+    border-left: 4px solid #198754;
+}
+
+.sales {
+    background: #f3edfa;
+    border-left: 4px solid #7c3aed;
+}
+
+.hr {
+    background: #fff3e8;
+    border-left: 4px solid #d97706;
+}
+
+.risk {
+    background: #fdecec;
+    border-left: 4px solid #dc3545;
+}
+
+.final-decision {
+    margin-top: 25px;
+
+    background: #f5eeee;
+
+    border: 1px solid #dec1c8;
+
+    padding: 25px;
+
+    border-radius: 15px;
+}
+
+.final-decision h2 {
+    color: var(--burgundy);
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   ANALYTICS
+   ========================================================= */
+
+.analytics-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+.analytics-card {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    transition: 0.3s;
+}
+
+.analytics-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #d7a9b5;
+}
+
+.analytics-card h3 {
+    color: var(--burgundy);
+
+    margin-bottom: 15px;
+}
+
+.analytics-card h2 {
+    color: #2b2023;
+
+    margin-bottom: 10px;
+}
+
+.analytics-card p {
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   REPORTS
+   ========================================================= */
+
+.report-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+.report-card {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    transition: 0.3s;
+}
+
+.report-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #d7a9b5;
+}
+
+.report-card h2 {
+    color: var(--burgundy);
+
+    margin-bottom: 15px;
+}
+
+.report-card p {
+    color: var(--muted);
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+
+.settings-card {
+    width: 600px;
+    max-width: 100%;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 30px;
+
+    border-radius: 15px;
+}
+
+.settings-card h2 {
+    color: var(--burgundy);
+
+    margin: 20px 0 10px;
+}
+
+.settings-card select {
+    width: 100%;
+
+    padding: 13px;
+
+    background: white;
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.profile-card {
+    width: 450px;
+    max-width: 100%;
+
+    margin: auto;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 30px;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 25px rgba(60, 20, 30, 0.06);
+}
+
+.profile-card img {
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    margin-bottom: 20px;
+
+    border: 3px solid var(--burgundy);
+}
+
+.profile-card h2 {
+    color: var(--burgundy);
+}
+
+.profile-card p {
+    color: var(--muted);
+
+    margin: 10px 0;
+}
+
+.profile-info {
+    text-align: left;
+
+    margin: 25px 0;
+}
+
+
+/* =========================================================
+   NOTIFICATIONS
+   ========================================================= */
+
+.notification-card {
+    padding: 20px;
+
+    border-radius: 12px;
+
+    margin-bottom: 15px;
+}
+
+.warning {
+    background: #fff7e8;
+    border-left: 4px solid var(--orange);
+}
+
+.success {
+    background: #edf8f1;
+    border-left: 4px solid var(--green);
+}
+
+.info {
+    background: #f8e9ed;
+    border-left: 4px solid var(--burgundy);
+}
+
+.danger {
+    background: #fdecec;
+    border-left: 4px solid var(--red);
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+th {
+    background: var(--burgundy);
+
+    color: white;
+
+    padding: 15px;
+
+    text-align: left;
+}
+
+td {
+    padding: 15px;
+
+    color: #514447;
+
+    border-bottom: 1px solid var(--border);
+}
+
+tr:hover {
+    background: #faf2f4;
+}
+
+
+/* =========================================================
+   MEETING
+   ========================================================= */
+
+.meeting-card {
+    width: 600px;
+    max-width: 100%;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 30px;
+
+    border-radius: 16px;
+}
+
+.meeting-card input,
+.meeting-card textarea {
+    width: 100%;
+
+    padding: 13px;
+
+    margin: 10px 0;
+
+    background: white;
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+}
+
+.meeting-card textarea {
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
+   AI AGENTS
+   ========================================================= */
+
+.agent-details {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.agent-box {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.agent-box:hover {
+    transform: translateY(-5px);
+
+    border-color: #d7a9b5;
+
+    box-shadow:
+        0 12px 30px rgba(128, 0, 32, 0.08);
+}
+
+.agent-box h2 {
+    color: var(--burgundy);
+
+    margin-bottom: 15px;
+}
+
+.agent-box p {
+    color: var(--muted);
+
+    margin-bottom: 20px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .twin-grid,
+    .boardroom,
+    .agent-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .content {
+        margin-left: 210px;
+        padding: 25px;
+    }
+
+    .cards,
+    .twin-grid,
+    .boardroom,
+    .analytics-grid,
+    .report-grid,
+    .agent-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .sidebar ul {
+        display: flex;
+        overflow-x: auto;
+        gap: 5px;
+    }
+
+    .sidebar li {
+        white-space: nowrap;
+    }
+
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .prediction-box {
+        padding: 22px;
+    }
+}

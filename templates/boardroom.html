@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Boardroom</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h2>AI Boardroom</h2>
+
+        <ul>
+
+            <li>
+                <a href="/dashboard">📊 Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/digital-twin">🏢 Digital Twin</a>
+            </li>
+
+            <li>
+                <a href="/boardroom">🤖 AI Boardroom</a>
+            </li>
+
+            <li>
+                <a href="/debate">💬 Debate</a>
+            </li>
+
+            <li>
+                <a href="/analytics">📈 Analytics</a>
+            </li>
+
+            <li>
+                <a href="/reports">📄 Reports</a>
+            </li>
+
+            <li>
+                <a href="/settings">⚙️ Settings</a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="content">
+
+        <h1>AI Boardroom</h1>
+
+        <p class="page-description">
+            Meet your AI executive team and make smarter business decisions.
+        </p>
+
+
+        <!-- AI AGENTS -->
+
+        <div class="boardroom">
+
+
+            <!-- CEO -->
+
+            <div class="agent">
+
+                <img
+                    src="{{ url_for('static', filename='images/ceo.png') }}"
+                    class="agent-image"
+                    alt="CEO">
+
+                <h2>👔 CEO</h2>
+
+                <p>
+                    Strategic decision maker responsible
+                    for overall business growth.
+                </p>
+
+                <button>
+                    Start Debate
+                </button>
+
+            </div>
+
+
+            <!-- CFO -->
+
+            <div class="agent">
+
+                <img
+                    src="{{ url_for('static', filename='images/cfo.png') }}"
+                    class="agent-image"
+                    alt="CFO">
+
+                <h2>💰 CFO</h2>
+
+                <p>
+                    Analyzes financial performance,
+                    costs and profitability.
+                </p>
+
+                <button>
+                    Start Debate
+                </button>
+
+            </div>
+
+
+            <!-- SALES -->
+
+            <div class="agent">
+
+                <img
+                    src="{{ url_for('static', filename='images/sales.png') }}"
+                    class="agent-image"
+                    alt="Sales Head">
+
+                <h2>📈 Sales Head</h2>
+
+                <p>
+                    Analyzes sales trends, customers
+                    and future revenue.
+                </p>
+
+                <button>
+                    Start Debate
+                </button>
+
+            </div>
+
+
+            <!-- HR -->
+
+            <div class="agent">
+
+                <img
+                    src="{{ url_for('static', filename='images/hr.png') }}"
+                    class="agent-image"
+                    alt="HR Head">
+
+                <h2>👥 HR Head</h2>
+
+                <p>
+                    Analyzes employees, workforce
+                    and organizational performance.
+                </p>
+
+                <button>
+                    Start Debate
+                </button>
+
+            </div>
+
+
+            <!-- RISK -->
+
+            <div class="agent">
+
+                <img
+                    src="{{ url_for('static', filename='images/risk.png') }}"
+                    class="agent-image"
+                    alt="Risk Manager">
+
+                <h2>⚠️ Risk Manager</h2>
+
+                <p>
+                    Identifies business risks and
+                    recommends mitigation strategies.
+                </p>
+
+                <button>
+                    Start Debate
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

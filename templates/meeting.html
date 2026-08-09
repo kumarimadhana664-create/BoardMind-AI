@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Meeting Scheduler</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<aside class="sidebar">
+
+<h2>AI Boardroom</h2>
+
+<ul>
+<li>🏠 Dashboard</li>
+<li>📅 Meeting Scheduler</li>
+</ul>
+
+</aside>
+
+<main class="content">
+
+<h1>Schedule AI Meeting</h1>
+
+<div class="meeting-card">
+
+<label>Meeting Title</label>
+
+<input type="text" placeholder="Quarterly Business Review">
+
+<label>Date</label>
+
+<input type="date">
+
+<label>Time</label>
+
+<input type="time">
+
+<label>Business Question</label>
+
+<textarea rows="5" placeholder="Enter business question..."></textarea>
+
+<button>Schedule Meeting</button>
+
+</div>
+
+</main>
+
+</div>
+
+</body>
+</html>

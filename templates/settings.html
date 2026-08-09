@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <aside class="sidebar">
+
+        <h2>AI Boardroom</h2>
+
+        <ul>
+            <li>🏠 Dashboard</li>
+            <li>🏢 Digital Twin</li>
+            <li>🤖 AI Boardroom</li>
+            <li>🗣 Debate</li>
+            <li>📊 Analytics</li>
+            <li>📄 Reports</li>
+            <li>⚙ Settings</li>
+        </ul>
+
+    </aside>
+
+    <main class="content">
+
+        <h1>Settings</h1>
+
+        <div class="settings-card">
+
+            <h2>🌐 Language</h2>
+            <select>
+                <option>English</option>
+                <option>Tamil</option>
+                <option>Hindi</option>
+            </select>
+
+            <h2>🤖 AI Model</h2>
+            <select>
+                <option>GPT</option>
+                <option>Llama 3</option>
+                <option>Gemini</option>
+            </select>
+
+            <h2>🌙 Theme</h2>
+            <select>
+                <option>Dark</option>
+                <option>Light</option>
+            </select>
+
+            <h2>🔔 Notifications</h2>
+            <label>
+                <input type="checkbox" checked>
+                Enable Notifications
+            </label>
+
+            <br><br>
+
+            <button>Save Settings</button>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>
