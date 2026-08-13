@@ -1,72 +1,661 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | BoardMind AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        .settings-header {
+            margin-bottom: 25px;
+        }
+
+        .settings-header h1 {
+            margin: 8px 0;
+        }
+
+        .settings-header p {
+            color: #666;
+        }
+
+        .settings-container {
+            max-width: 1000px;
+        }
+
+        .settings-card {
+            background: #ffffff;
+            border: 1px solid #f0dfe4;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 18px rgba(128, 0, 32, 0.06);
+        }
+
+        .settings-card h2 {
+            margin-top: 0;
+            color: #5c0018;
+        }
+
+        .settings-card p {
+            color: #666;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 17px 0;
+            border-bottom: 1px solid #f0dfe4;
+            gap: 20px;
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+
+        .setting-info strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .setting-info span {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .setting-select {
+            padding: 9px 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .toggle {
+            position: relative;
+            width: 48px;
+            height: 25px;
+        }
+
+        .toggle input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            background: #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 19px;
+            height: 19px;
+            left: 3px;
+            top: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        .toggle input:checked + .slider {
+            background: #800020;
+        }
+
+        .toggle input:checked + .slider::before {
+            transform: translateX(23px);
+        }
+
+        .save-btn {
+            background: #800020;
+            color: white;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .save-btn:hover {
+            background: #5c0018;
+        }
+
+        .status-box {
+            background: #fff8fa;
+            border-left: 4px solid #800020;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .danger-btn {
+            background: white;
+            color: #800020;
+            border: 1px solid #800020;
+            padding: 10px 17px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .danger-btn:hover {
+            background: #fff8fa;
+        }
+
+        @media (max-width: 650px) {
+
+            .setting-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
+
 <div class="dashboard">
+
+
+    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
         <h2>AI Boardroom</h2>
 
         <ul>
-            <li>🏠 Dashboard</li>
-            <li>🏢 Digital Twin</li>
-            <li>🤖 AI Boardroom</li>
-            <li>🗣 Debate</li>
-            <li>📊 Analytics</li>
-            <li>📄 Reports</li>
-            <li>⚙ Settings</li>
+
+            <li>
+                <a href="/dashboard">
+                    🏠 Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/digital-twin">
+                    🏢 Digital Twin
+                </a>
+            </li>
+
+            <li>
+                <a href="/boardroom">
+                    🤖 AI Boardroom
+                </a>
+            </li>
+
+            <li class="agents-menu">
+
+                <a href="#">
+                    🧠 AI Agents ▾
+                </a>
+
+                <ul class="agent-submenu show">
+
+                    <li>
+                        <a href="/ceo">
+                            👔 CEO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/cfo">
+                            💰 CFO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/sales">
+                            📈 Sales Head
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/hr">
+                            👥 HR Head
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li>
+                <a href="/debate">
+                    🗣 Debate
+                </a>
+            </li>
+
+            <li>
+                <a href="/analytics">
+                    📊 Analytics
+                </a>
+            </li>
+
+            <li>
+                <a href="/reports">
+                    📄 Reports
+                </a>
+            </li>
+
+            <li class="selected-agent">
+                <a href="/settings">
+                    ⚙ Settings
+                </a>
+            </li>
+
         </ul>
 
     </aside>
 
+
+    <!-- MAIN CONTENT -->
+
     <main class="content">
 
-        <h1>Settings</h1>
 
-        <div class="settings-card">
+        <div class="settings-header">
 
-            <h2>🌐 Language</h2>
-            <select>
-                <option>English</option>
-                <option>Tamil</option>
-                <option>Hindi</option>
-            </select>
+            <span class="agent-label">
+                SYSTEM CONFIGURATION
+            </span>
 
-            <h2>🤖 AI Model</h2>
-            <select>
-                <option>GPT</option>
-                <option>Llama 3</option>
-                <option>Gemini</option>
-            </select>
+            <h1>
+                Settings
+            </h1>
 
-            <h2>🌙 Theme</h2>
-            <select>
-                <option>Dark</option>
-                <option>Light</option>
-            </select>
-
-            <h2>🔔 Notifications</h2>
-            <label>
-                <input type="checkbox" checked>
-                Enable Notifications
-            </label>
-
-            <br><br>
-
-            <button>Save Settings</button>
+            <p>
+                Configure your BoardMind AI workspace
+                and business intelligence preferences.
+            </p>
 
         </div>
 
+
+        <div class="settings-container">
+
+
+            <!-- GENERAL -->
+
+            <div class="settings-card">
+
+                <h2>
+                    ⚙ General Settings
+                </h2>
+
+                <p>
+                    Basic preferences for your BoardMind
+                    AI workspace.
+                </p>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <strong>
+                            Workspace Name
+                        </strong>
+
+                        <span>
+                            Name displayed across the platform.
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="text"
+                        value="BoardMind AI"
+                        style="
+                            padding:9px;
+                            border:1px solid #ddd;
+                            border-radius:8px;
+                        "
+                    >
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <strong>
+                            Language
+                        </strong>
+
+                        <span>
+                            Select the interface language.
+                        </span>
+
+                    </div>
+
+                    <select class="setting-select">
+
+                        <option selected>
+                            English
+                        </option>
+
+                        <option>
+                            Tamil
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <strong>
+                            Time Zone
+                        </strong>
+
+                        <span>
+                            Used for reports and analytics.
+                        </span>
+
+                    </div>
+
+                    <select class="setting-select">
+
+                        <option selected>
+                            Asia/Kolkata
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- AI SETTINGS -->
+
+            <div class="settings-card">
+
+                <h2>
+                    🤖 AI Settings
+                </h2>
+
+                <p>
+                    Configure how AI executives operate.
+                </p>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <strong>
+                            AI Agents
+                        </strong>
+
+                        <span>
+                            Enable CEO, CFO, Sales and HR agents.
+                        </span>
+
+                    </div>
+
+                    <label class="toggle">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <strong>
+                            AI Recommendations
+                        </strong>
+
+                        <span>
+                            Allow AI to generate business recommendations.
+                        </span>
+
+                    </div>
+
+                    <label class="toggle">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <strong>
+                            AI Debate
+                        </strong>
+
+                        <span>
+                            Allow executives to participate in debates.
+                        </span>
+
+                    </div>
+
+                    <label class="toggle">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTIFICATIONS -->
+
+            <div class="settings-card">
+
+                <h2>
+                    🔔 Notifications
+                </h2>
+
+                <p>
+                    Control important BoardMind AI alerts.
+                </p>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <strong>
+                            Business Alerts
+                        </strong>
+
+                        <span>
+                            Receive alerts about important business risks.
+                        </span>
+
+                    </div>
+
+                    <label class="toggle">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <strong>
+                            Report Notifications
+                        </strong>
+
+                        <span>
+                            Notify when a new report is generated.
+                        </span>
+
+                    </div>
+
+                    <label class="toggle">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- SYSTEM STATUS -->
+
+            <div class="settings-card">
+
+                <h2>
+                    🖥 System Status
+                </h2>
+
+
+                <div class="status-box">
+
+                    <strong>
+                        BoardMind AI
+                    </strong>
+
+                    <p>
+                        System is ready for business analysis,
+                        AI consultation and decision support.
+                    </p>
+
+                    <strong>
+                        Status: Online
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="settings-card">
+
+                <h2>
+                    💾 Save Settings
+                </h2>
+
+                <p>
+                    Save your current workspace preferences.
+                </p>
+
+                <button
+                    class="save-btn"
+                    onclick="saveSettings()">
+
+                    Save Settings
+
+                </button>
+
+                <button
+                    class="danger-btn"
+                    onclick="resetSettings()">
+
+                    Reset
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
     </main>
+
 
 </div>
 
+
+<script>
+
+function saveSettings() {
+
+    alert(
+        "BoardMind AI settings saved successfully!"
+    );
+
+}
+
+
+function resetSettings() {
+
+    const confirmReset =
+        confirm(
+            "Reset the settings to default?"
+        );
+
+    if (confirmReset) {
+
+        alert(
+            "Settings reset successfully."
+        );
+
+    }
+
+}
+
+</script>
+
+
 </body>
+
 </html>

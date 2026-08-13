@@ -1,66 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics | BoardMind AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        .analytics-header {
+            margin-bottom: 25px;
+        }
+
+        .analytics-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .analytics-header p {
+            color: #666;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .analytics-card {
+            background: #ffffff;
+            border: 1px solid #f0dfe4;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 18px rgba(128, 0, 32, 0.06);
+        }
+
+        .analytics-card h3 {
+            margin: 0 0 10px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .analytics-value {
+            font-size: 26px;
+            font-weight: 700;
+            color: #800020;
+        }
+
+        .analytics-change {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .chart-container {
+            background: #ffffff;
+            border: 1px solid #f0dfe4;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(128, 0, 32, 0.06);
+        }
+
+        .chart-container h2 {
+            margin-top: 0;
+            color: #5c0018;
+        }
+
+        .chart {
+            height: 260px;
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            gap: 15px;
+            padding: 20px 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .bar {
+            width: 45px;
+            background: #800020;
+            border-radius: 7px 7px 0 0;
+            position: relative;
+            transition: 0.2s;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+        }
+
+        .bar span {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #666;
+        }
+
+        .analytics-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .insight-card {
+            background: #fff8fa;
+            border: 1px solid #f0dfe4;
+            border-radius: 16px;
+            padding: 22px;
+        }
+
+        .insight-card h2 {
+            margin-top: 0;
+            color: #5c0018;
+        }
+
+        .insight {
+            padding: 14px;
+            margin-top: 10px;
+            background: #ffffff;
+            border-radius: 10px;
+            border-left: 4px solid #800020;
+        }
+
+        .prediction-box {
+            background: #ffffff;
+            border: 1px solid #f0dfe4;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 5px 18px rgba(128, 0, 32, 0.06);
+        }
+
+        .prediction-box h2 {
+            margin-top: 0;
+            color: #5c0018;
+        }
+
+        .prediction-score {
+            font-size: 32px;
+            font-weight: 700;
+            color: #800020;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 1000px) {
+
+            .analytics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .analytics-section {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
+
 <div class="dashboard">
+
+
+    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
         <h2>AI Boardroom</h2>
 
         <ul>
-            <li>🏠 Dashboard</li>
-            <li>🏢 Digital Twin</li>
-            <li>🤖 AI Boardroom</li>
-            <li>🗣 Debate</li>
-            <li>📊 Analytics</li>
-            <li>📄 Reports</li>
-            <li>⚙ Settings</li>
+
+            <li>
+                <a href="/dashboard">
+                    🏠 Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/digital-twin">
+                    🏢 Digital Twin
+                </a>
+            </li>
+
+            <li>
+                <a href="/boardroom">
+                    🤖 AI Boardroom
+                </a>
+            </li>
+
+            <li class="agents-menu">
+
+                <a href="#">
+                    🧠 AI Agents ▾
+                </a>
+
+                <ul class="agent-submenu show">
+
+                    <li>
+                        <a href="/ceo">
+                            👔 CEO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/cfo">
+                            💰 CFO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/sales">
+                            📈 Sales Head
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/hr">
+                            👥 HR Head
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li>
+                <a href="/debate">
+                    🗣 Debate
+                </a>
+            </li>
+
+            <li class="selected-agent">
+                <a href="/analytics">
+                    📊 Analytics
+                </a>
+            </li>
+
+            <li>
+                <a href="/reports">
+                    📄 Reports
+                </a>
+            </li>
+
+            <li>
+                <a href="/settings">
+                    ⚙ Settings
+                </a>
+            </li>
+
         </ul>
 
     </aside>
 
+
+    <!-- MAIN CONTENT -->
+
     <main class="content">
 
-        <h1>Business Analytics</h1>
+
+        <div class="analytics-header">
+
+            <span class="agent-label">
+                BUSINESS INTELLIGENCE
+            </span>
+
+            <h1>
+                Business Analytics
+            </h1>
+
+            <p>
+                Monitor business performance, trends
+                and AI prediction results.
+            </p>
+
+        </div>
+
+
+        <!-- KPI CARDS -->
 
         <div class="analytics-grid">
 
             <div class="analytics-card">
-                <h3>📈 Revenue Forecast</h3>
-                <h2>+18%</h2>
-                <p>Expected growth next quarter.</p>
+
+                <h3>Revenue</h3>
+
+                <div class="analytics-value">
+                    ₹2.5 Cr
+                </div>
+
+                <div class="analytics-change">
+                    Growth +12.5%
+                </div>
+
             </div>
 
-            <div class="analytics-card">
-                <h3>💰 Profit Prediction</h3>
-                <h2>₹1.2 Cr</h2>
-                <p>Estimated monthly profit.</p>
-            </div>
 
             <div class="analytics-card">
-                <h3>👥 Customer Growth</h3>
-                <h2>+12%</h2>
-                <p>New customers expected.</p>
+
+                <h3>Profit</h3>
+
+                <div class="analytics-value">
+                    ₹80 L
+                </div>
+
+                <div class="analytics-change">
+                    Growth +8.4%
+                </div>
+
             </div>
 
+
             <div class="analytics-card">
-                <h3>⚠ Risk Score</h3>
-                <h2>Low</h2>
-                <p>Business risk remains stable.</p>
+
+                <h3>Total Sales</h3>
+
+                <div class="analytics-value">
+                    15,200
+                </div>
+
+                <div class="analytics-change">
+                    Growth +15%
+                </div>
+
+            </div>
+
+
+            <div class="analytics-card">
+
+                <h3>Employees</h3>
+
+                <div class="analytics-value">
+                    245
+                </div>
+
+                <div class="analytics-change">
+                    Workforce stable
+                </div>
+
             </div>
 
         </div>
+
+
+        <!-- SALES CHART -->
+
+        <div class="chart-container">
+
+            <h2>
+                📈 Monthly Sales Trend
+            </h2>
+
+            <p>
+                Sales performance over the last six months.
+            </p>
+
+            <div class="chart">
+
+                <div class="bar" style="height: 45%;">
+                    <span>Mar</span>
+                </div>
+
+                <div class="bar" style="height: 55%;">
+                    <span>Apr</span>
+                </div>
+
+                <div class="bar" style="height: 62%;">
+                    <span>May</span>
+                </div>
+
+                <div class="bar" style="height: 70%;">
+                    <span>Jun</span>
+                </div>
+
+                <div class="bar" style="height: 82%;">
+                    <span>Jul</span>
+                </div>
+
+                <div class="bar" style="height: 92%;">
+                    <span>Aug</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INSIGHTS + ML -->
+
+        <div class="analytics-section">
+
+
+            <div class="insight-card">
+
+                <h2>
+                    🧠 Business Insights
+                </h2>
+
+                <div class="insight">
+                    Sales are showing a positive growth trend.
+                </div>
+
+                <div class="insight">
+                    Profitability is improving compared
+                    with the previous period.
+                </div>
+
+                <div class="insight">
+                    Inventory level is currently stable.
+                </div>
+
+                <div class="insight">
+                    Workforce capacity appears sufficient
+                    for current operations.
+                </div>
+
+            </div>
+
+
+            <div class="prediction-box">
+
+                <h2>
+                    🤖 ML Prediction Performance
+                </h2>
+
+                <p>
+                    Current Sales Prediction Model
+                </p>
+
+                <div class="prediction-score">
+                    R² = 0.857
+                </div>
+
+                <p>
+                    The trained regression model currently
+                    explains approximately 85.7% of the
+                    variation in the sales target.
+                </p>
+
+                <p>
+                    <strong>MAE:</strong>
+                    173.21
+                </p>
+
+                <p>
+                    <strong>MSE:</strong>
+                    41,883.99
+                </p>
+
+            </div>
+
+
+        </div>
+
 
     </main>
 
 </div>
 
+
 </body>
+
 </html>

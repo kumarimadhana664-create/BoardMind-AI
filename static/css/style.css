@@ -1892,3 +1892,458 @@ tr:hover {
 
     font-size: 12px;
 }
+/* =========================================
+   AI AGENTS SIDEBAR
+   ========================================= */
+
+.agents-menu > a {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.agent-submenu {
+    display: none;
+    list-style: none;
+    margin: 5px 0 5px 15px;
+    padding-left: 10px;
+    border-left: 2px solid #eadde1;
+}
+
+.agent-submenu.show {
+    display: block;
+}
+
+.agent-submenu li {
+    margin-bottom: 3px;
+}
+
+.agent-submenu li a {
+    display: block;
+    padding: 9px 12px;
+    color: #75686b;
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 7px;
+}
+
+.agent-submenu li a:hover {
+    background: #f8edf0;
+    color: #800020;
+}
+
+#agent-arrow {
+    color: #800020;
+    transition: 0.2s;
+}
+
+#agent-arrow.open {
+    transform: rotate(90deg);
+}
+
+
+/* =========================================
+   DASHBOARD HEADER
+   ========================================= */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.small-title {
+    color: #800020;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    color: #75686b;
+    margin-top: 8px;
+}
+
+
+/* SYSTEM STATUS */
+
+.status {
+    color: #800020;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    background: #16a34a;
+    border-radius: 50%;
+}
+
+
+/* CARD ICON */
+
+.card-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   PREDICTION BOX
+   ========================================= */
+
+.prediction-box {
+    margin-top: 35px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid #eadde1;
+    box-shadow: 0 10px 30px rgba(80, 20, 35, 0.08);
+}
+
+.prediction-header h2 {
+    color: #800020;
+    margin: 5px 0 8px;
+}
+
+.prediction-header p:last-child {
+    color: #75686b;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    color: #3b2026;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddcbd1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #800020;
+}
+
+
+/* PREDICT BUTTON */
+
+.predict-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
+    background: #800020;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.predict-btn:hover {
+    background: #5c0018;
+}
+
+
+/* PREDICTION RESULT */
+
+.prediction-result {
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff8fa;
+    border-left: 4px solid #800020;
+    border-radius: 8px;
+}
+
+.prediction-result p {
+    color: #75686b;
+    margin-bottom: 5px;
+}
+
+.prediction-result h2 {
+    color: #800020;
+}
+/* =========================================
+   AI AGENT CONSULTATION
+   ========================================= */
+
+.agent-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.agent-page-header h1 {
+    color: #800020;
+    margin: 5px 0 10px;
+}
+
+.agent-page-header p {
+    color: #75686b;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+.agent-label {
+    color: #a45a6a;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.agent-status {
+    color: #198754;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.agent-status span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #198754;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+
+/* PROFILE */
+
+.agent-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    background: #fff;
+    border: 1px solid #eadde1;
+
+    padding: 22px;
+    border-radius: 15px;
+
+    margin-bottom: 25px;
+
+    box-shadow: 0 5px 20px rgba(80,20,35,.06);
+}
+
+.agent-avatar {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    font-size: 30px;
+}
+
+.ceo-avatar {
+    background: #f8e8ed;
+}
+
+.cfo-avatar {
+    background: #fff2d8;
+}
+
+.sales-avatar {
+    background: #e8f0ff;
+}
+
+.hr-avatar {
+    background: #eee8ff;
+}
+
+.agent-profile h2 {
+    color: #3b2026;
+    margin-bottom: 6px;
+}
+
+.agent-profile p {
+    color: #75686b;
+}
+
+
+/* CONSULTATION */
+
+.consultation-box {
+    background: #fff;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    border: 1px solid #eadde1;
+
+    box-shadow:
+        0 10px 30px rgba(80,20,35,.07);
+}
+
+.consultation-title h2 {
+    color: #800020;
+    margin-bottom: 6px;
+}
+
+.consultation-title p {
+    color: #75686b;
+    margin-bottom: 20px;
+}
+
+
+/* TEXTAREA */
+
+.consultation-box textarea {
+    width: 100%;
+
+    min-height: 130px;
+
+    resize: vertical;
+
+    padding: 15px;
+
+    border: 1px solid #ddcbd1;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.consultation-box textarea:focus {
+    border-color: #800020;
+
+    box-shadow:
+        0 0 0 3px rgba(128,0,32,.08);
+}
+
+
+/* SUGGESTIONS */
+
+.suggestions {
+    display: flex;
+    gap: 10px;
+
+    margin: 15px 0;
+
+    flex-wrap: wrap;
+}
+
+.suggestions button {
+    margin: 0;
+
+    padding: 9px 14px;
+
+    background: #fff;
+
+    color: #800020;
+
+    border: 1px solid #d8b8c1;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.suggestions button:hover {
+    background: #f8edf0;
+}
+
+
+/* ASK BUTTON */
+
+.ask-agent-btn {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 14px;
+
+    background: #800020;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.ask-agent-btn:hover {
+    background: #5c0018;
+}
+
+
+/* AI RESPONSE */
+
+.ai-response {
+    margin-top: 25px;
+
+    background: #fff8fa;
+
+    border: 1px solid #eadde1;
+
+    border-radius: 12px;
+
+    padding: 20px;
+}
+
+.response-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color: #800020;
+
+    font-weight: bold;
+
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid #eadde1;
+
+    margin-bottom: 15px;
+}
+
+.response-status {
+    background: #f2dce2;
+
+    padding: 4px 9px;
+
+    border-radius: 12px;
+
+    font-size: 10px;
+}
+
+.waiting {
+    color: #75686b;
+
+    font-size: 14px;
+}

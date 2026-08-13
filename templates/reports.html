@@ -1,78 +1,671 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reports</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Reports | BoardMind AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        .reports-header {
+            margin-bottom: 25px;
+        }
+
+        .reports-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .reports-header p {
+            color: #666;
+        }
+
+        .report-actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .report-btn {
+            border: none;
+            background: #800020;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .report-btn:hover {
+            background: #5c0018;
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .report-card {
+            background: #ffffff;
+            border: 1px solid #f0dfe4;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 18px rgba(128, 0, 32, 0.06);
+        }
+
+        .report-card h2 {
+            margin-top: 0;
+            color: #5c0018;
+        }
+
+        .report-card h3 {
+            color: #800020;
+            margin-top: 22px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .summary-item {
+            background: #fff8fa;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .summary-item span {
+            display: block;
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .summary-item strong {
+            color: #800020;
+            font-size: 18px;
+        }
+
+        .recommendation {
+            border-left: 4px solid #800020;
+            background: #fff8fa;
+            padding: 14px;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+
+        .risk {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px;
+            border-bottom: 1px solid #f0dfe4;
+        }
+
+        .risk:last-child {
+            border-bottom: none;
+        }
+
+        .risk-status {
+            color: #800020;
+            font-weight: 700;
+        }
+
+        .decision-box {
+            background: #800020;
+            color: white;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .decision-box h2 {
+            margin-top: 0;
+            color: white;
+        }
+
+        .decision-box p {
+            line-height: 1.6;
+        }
+
+        @media (max-width: 850px) {
+
+            .report-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .report-actions {
+                flex-direction: column;
+            }
+
+        }
+
+        @media print {
+
+            .sidebar,
+            .report-actions {
+                display: none;
+            }
+
+            .content {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
+
 <div class="dashboard">
+
+
+    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
         <h2>AI Boardroom</h2>
 
         <ul>
-            <li>🏠 Dashboard</li>
-            <li>🏢 Digital Twin</li>
-            <li>🤖 AI Boardroom</li>
-            <li>🗣 Debate</li>
-            <li>📊 Analytics</li>
-            <li>📄 Reports</li>
-            <li>⚙ Settings</li>
+
+            <li>
+                <a href="/dashboard">
+                    🏠 Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/digital-twin">
+                    🏢 Digital Twin
+                </a>
+            </li>
+
+            <li>
+                <a href="/boardroom">
+                    🤖 AI Boardroom
+                </a>
+            </li>
+
+            <li class="agents-menu">
+
+                <a href="#">
+                    🧠 AI Agents ▾
+                </a>
+
+                <ul class="agent-submenu show">
+
+                    <li>
+                        <a href="/ceo">
+                            👔 CEO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/cfo">
+                            💰 CFO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/sales">
+                            📈 Sales Head
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/hr">
+                            👥 HR Head
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li>
+                <a href="/debate">
+                    🗣 Debate
+                </a>
+            </li>
+
+            <li>
+                <a href="/analytics">
+                    📊 Analytics
+                </a>
+            </li>
+
+            <li class="selected-agent">
+                <a href="/reports">
+                    📄 Reports
+                </a>
+            </li>
+
+            <li>
+                <a href="/settings">
+                    ⚙ Settings
+                </a>
+            </li>
+
         </ul>
 
     </aside>
 
+
+    <!-- MAIN CONTENT -->
+
     <main class="content">
 
-        <h1>AI Generated Reports</h1>
 
-        <div class="report-grid">
+        <div class="reports-header">
 
-            <div class="report-card">
-                <h2>📊 Sales Report</h2>
-                <p>Monthly sales performance and trends.</p>
-                <button>Download PDF</button>
-            </div>
+            <span class="agent-label">
+                BUSINESS INTELLIGENCE
+            </span>
 
-            <div class="report-card">
-                <h2>💰 Finance Report</h2>
-                <p>Revenue, expenses, and profit summary.</p>
-                <button>Download PDF</button>
-            </div>
+            <h1>
+                Business Reports
+            </h1>
 
-            <div class="report-card">
-                <h2>🤖 AI Board Meeting</h2>
-                <p>AI discussion summary and recommendations.</p>
-                <button>Download PDF</button>
-            </div>
-
-            <div class="report-card">
-                <h2>⚠ Risk Assessment</h2>
-                <p>Business risks and mitigation strategies.</p>
-                <button>Download PDF</button>
-            </div>
-
-            <div class="report-card">
-                <h2>📈 Business Forecast</h2>
-                <p>Predicted revenue and growth analysis.</p>
-                <button>Download PDF</button>
-            </div>
-
-            <div class="report-card">
-                <h2>📄 Executive Summary</h2>
-                <p>Overall company performance report.</p>
-                <button>Download PDF</button>
-            </div>
+            <p>
+                Review business performance, AI insights,
+                risks and recommended actions.
+            </p>
 
         </div>
 
+
+        <!-- ACTIONS -->
+
+        <div class="report-actions">
+
+            <button
+                class="report-btn"
+                onclick="window.print()">
+
+                🖨 Print Report
+
+            </button>
+
+            <button
+                class="report-btn"
+                onclick="generateReport()">
+
+                🤖 Generate AI Summary
+
+            </button>
+
+        </div>
+
+
+        <div class="report-grid">
+
+
+            <!-- LEFT -->
+
+            <div>
+
+
+                <!-- BUSINESS SUMMARY -->
+
+                <div class="report-card">
+
+                    <h2>
+                        📊 Business Summary
+                    </h2>
+
+                    <div class="summary-grid">
+
+                        <div class="summary-item">
+
+                            <span>
+                                Revenue
+                            </span>
+
+                            <strong>
+                                ₹2.5 Cr
+                            </strong>
+
+                        </div>
+
+                        <div class="summary-item">
+
+                            <span>
+                                Profit
+                            </span>
+
+                            <strong>
+                                ₹80 L
+                            </strong>
+
+                        </div>
+
+                        <div class="summary-item">
+
+                            <span>
+                                Total Sales
+                            </span>
+
+                            <strong>
+                                15,200
+                            </strong>
+
+                        </div>
+
+                        <div class="summary-item">
+
+                            <span>
+                                Employees
+                            </span>
+
+                            <strong>
+                                245
+                            </strong>
+
+                        </div>
+
+                        <div class="summary-item">
+
+                            <span>
+                                Inventory
+                            </span>
+
+                            <strong>
+                                91%
+                            </strong>
+
+                        </div>
+
+                        <div class="summary-item">
+
+                            <span>
+                                Business Risk
+                            </span>
+
+                            <strong>
+                                Low
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI RECOMMENDATIONS -->
+
+                <div class="report-card">
+
+                    <h2>
+                        🧠 AI Recommendations
+                    </h2>
+
+                    <div class="recommendation">
+
+                        <strong>CEO:</strong>
+
+                        Focus on sustainable growth and
+                        evaluate new market opportunities
+                        before major expansion.
+
+                    </div>
+
+                    <div class="recommendation">
+
+                        <strong>CFO:</strong>
+
+                        Monitor operational costs and
+                        maintain sufficient financial
+                        reserves before investing.
+
+                    </div>
+
+                    <div class="recommendation">
+
+                        <strong>Sales Head:</strong>
+
+                        Increase customer acquisition and
+                        focus on high-performing products.
+
+                    </div>
+
+                    <div class="recommendation">
+
+                        <strong>HR Head:</strong>
+
+                        Align hiring with business growth
+                        and maintain workforce capacity.
+
+                    </div>
+
+                </div>
+
+
+                <!-- FINAL DECISION -->
+
+                <div class="decision-box">
+
+                    <h2>
+                        🎯 Recommended Business Direction
+                    </h2>
+
+                    <p>
+                        BoardMind AI recommends controlled
+                        business expansion while monitoring
+                        financial risk, sales performance
+                        and workforce requirements.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div>
+
+
+                <!-- RISKS -->
+
+                <div class="report-card">
+
+                    <h2>
+                        ⚠ Key Risks
+                    </h2>
+
+                    <div class="risk">
+
+                        <span>
+                            Financial Risk
+                        </span>
+
+                        <span class="risk-status">
+                            Low
+                        </span>
+
+                    </div>
+
+                    <div class="risk">
+
+                        <span>
+                            Sales Risk
+                        </span>
+
+                        <span class="risk-status">
+                            Low
+                        </span>
+
+                    </div>
+
+                    <div class="risk">
+
+                        <span>
+                            Workforce Risk
+                        </span>
+
+                        <span class="risk-status">
+                            Medium
+                        </span>
+
+                    </div>
+
+                    <div class="risk">
+
+                        <span>
+                            Inventory Risk
+                        </span>
+
+                        <span class="risk-status">
+                            Low
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ML -->
+
+                <div class="report-card">
+
+                    <h2>
+                        🤖 ML Prediction
+                    </h2>
+
+                    <p>
+                        Sales prediction model performance:
+                    </p>
+
+                    <h3>
+                        R² Score: 0.857
+                    </h3>
+
+                    <p>
+                        MAE: 173.21
+                    </p>
+
+                    <p>
+                        MSE: 41,883.99
+                    </p>
+
+                </div>
+
+
+                <!-- REPORT STATUS -->
+
+                <div class="report-card">
+
+                    <h2>
+                        📄 Report Status
+                    </h2>
+
+                    <p>
+                        <strong>
+                            Generated:
+                        </strong>
+                        Today
+                    </p>
+
+                    <p>
+                        <strong>
+                            Data Source:
+                        </strong>
+                        BoardMind AI
+                    </p>
+
+                    <p>
+                        <strong>
+                            AI Analysis:
+                        </strong>
+                        Available
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- AI SUMMARY -->
+
+        <div
+            id="aiSummary"
+            class="report-card"
+            style="display:none;">
+
+            <h2>
+                🤖 BoardMind AI Summary
+            </h2>
+
+            <p id="summaryText"></p>
+
+        </div>
+
+
     </main>
+
 
 </div>
 
+
+<script>
+
+function generateReport() {
+
+    const summary =
+        document.getElementById("aiSummary");
+
+    const text =
+        document.getElementById("summaryText");
+
+
+    text.innerHTML = `
+        BoardMind AI analysis indicates positive
+        business performance with growing sales,
+        stable profitability and manageable risk.
+        The company should focus on controlled growth,
+        customer acquisition, cost management and
+        workforce planning.
+    `;
+
+
+    summary.style.display = "block";
+
+    summary.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+</script>
+
+
 </body>
+
 </html>

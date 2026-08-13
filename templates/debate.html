@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>AI Debate | AI Boardroom</title>
+    <title>AI Debate | BoardMind AI</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
@@ -19,7 +19,7 @@
 
 <div class="dashboard">
 
-    <!-- SIDEBAR -->
+    <!-- ================= SIDEBAR ================= -->
 
     <aside class="sidebar">
 
@@ -28,31 +28,83 @@
         <ul>
 
             <li>
-                <a href="/dashboard">Dashboard</a>
+                <a href="/dashboard">
+                    🏠 Dashboard
+                </a>
             </li>
 
             <li>
-                <a href="/digital-twin">Digital Twin</a>
+                <a href="/digital-twin">
+                    🏢 Digital Twin
+                </a>
             </li>
 
             <li>
-                <a href="/boardroom">AI Boardroom</a>
+                <a href="/boardroom">
+                    🤖 AI Boardroom
+                </a>
+            </li>
+
+            <!-- AI AGENTS -->
+
+            <li class="agents-menu">
+
+                <a href="#">
+                    🧠 AI Agents ▾
+                </a>
+
+                <ul class="agent-submenu show">
+
+                    <li>
+                        <a href="/ceo">
+                            👔 CEO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/cfo">
+                            💰 CFO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/sales">
+                            📈 Sales Head
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/hr">
+                            👥 HR Head
+                        </a>
+                    </li>
+
+                </ul>
+
             </li>
 
             <li class="active">
-                <a href="/debate">Debate</a>
+                <a href="/debate">
+                    🗣 Debate
+                </a>
             </li>
 
             <li>
-                <a href="/analytics">Analytics</a>
+                <a href="/analytics">
+                    📊 Analytics
+                </a>
             </li>
 
             <li>
-                <a href="/reports">Reports</a>
+                <a href="/reports">
+                    📄 Reports
+                </a>
             </li>
 
             <li>
-                <a href="/settings">Settings</a>
+                <a href="/settings">
+                    ⚙ Settings
+                </a>
             </li>
 
         </ul>
@@ -60,9 +112,10 @@
     </aside>
 
 
-    <!-- MAIN CONTENT -->
+    <!-- ================= MAIN CONTENT ================= -->
 
     <main class="content">
+
 
         <!-- HEADER -->
 
@@ -74,40 +127,52 @@
                     AI DECISION ENGINE
                 </p>
 
-                <h1>Boardroom Debate</h1>
+                <h1>
+                    Boardroom Debate
+                </h1>
 
                 <p class="subtitle">
-                    Ask a business question and let your AI
-                    executives analyze it from different perspectives.
+                    Ask a business question and let your
+                    AI executives analyze it from different
+                    perspectives.
                 </p>
 
             </div>
 
+
             <div class="status">
+
                 <span class="status-dot"></span>
+
                 BOARDROOM READY
+
             </div>
 
         </div>
 
 
-        <!-- QUESTION -->
+        <!-- ================= QUESTION ================= -->
 
         <div class="question-card">
 
-            <h2>What decision should the board discuss?</h2>
+            <h2>
+                What decision should the board discuss?
+            </h2>
 
             <p>
                 Enter a business question for the AI executives.
             </p>
+
 
             <textarea
                 id="question"
                 placeholder="Example: Should we increase our marketing budget by 20%?"
             ></textarea>
 
+
             <button
                 class="start-debate-btn"
+                id="debateButton"
                 onclick="startDebate()">
 
                 Start AI Debate →
@@ -117,7 +182,7 @@
         </div>
 
 
-        <!-- EXECUTIVE OPINIONS -->
+        <!-- ================= EXECUTIVE OPINIONS ================= -->
 
         <h2 class="section-title">
             Executive Opinions
@@ -137,14 +202,20 @@
 
                 <div>
 
-                    <h3>CEO</h3>
+                    <h3>
+                        CEO
+                    </h3>
 
-                    <span>Strategy</span>
+                    <span>
+                        Strategy
+                    </span>
 
                 </div>
 
                 <p id="ceo-opinion">
+
                     Waiting for the business question...
+
                 </p>
 
             </div>
@@ -160,14 +231,20 @@
 
                 <div>
 
-                    <h3>CFO</h3>
+                    <h3>
+                        CFO
+                    </h3>
 
-                    <span>Finance</span>
+                    <span>
+                        Finance
+                    </span>
 
                 </div>
 
                 <p id="cfo-opinion">
+
                     Waiting for the business question...
+
                 </p>
 
             </div>
@@ -183,14 +260,20 @@
 
                 <div>
 
-                    <h3>Sales Head</h3>
+                    <h3>
+                        Sales Head
+                    </h3>
 
-                    <span>Revenue</span>
+                    <span>
+                        Revenue
+                    </span>
 
                 </div>
 
                 <p id="sales-opinion">
+
                     Waiting for the business question...
+
                 </p>
 
             </div>
@@ -206,22 +289,29 @@
 
                 <div>
 
-                    <h3>HR Head</h3>
+                    <h3>
+                        HR Head
+                    </h3>
 
-                    <span>People</span>
+                    <span>
+                        People
+                    </span>
 
                 </div>
 
                 <p id="hr-opinion">
+
                     Waiting for the business question...
+
                 </p>
 
             </div>
 
+
         </div>
 
 
-        <!-- FINAL DECISION -->
+        <!-- ================= FINAL DECISION ================= -->
 
         <div class="final-decision">
 
@@ -231,22 +321,183 @@
                     BOARD RECOMMENDATION
                 </p>
 
-                <h2>Final Decision</h2>
+                <h2>
+                    Final Decision
+                </h2>
 
                 <p id="final-result">
-                    The board is waiting for the debate to begin.
+
+                    The board is waiting for the
+                    debate to begin.
+
                 </p>
 
             </div>
 
         </div>
 
+
     </main>
 
 </div>
 
 
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+async function startDebate() {
+
+    const question =
+        document.getElementById("question").value.trim();
+
+    const button =
+        document.getElementById("debateButton");
+
+
+    /* CHECK QUESTION */
+
+    if (!question) {
+
+        alert("Please enter a business question.");
+
+        return;
+
+    }
+
+
+    /* LOADING */
+
+    button.disabled = true;
+
+    button.innerText =
+        "AI Executives are analyzing...";
+
+
+    document.getElementById("ceo-opinion").innerText =
+        "CEO is analyzing the decision...";
+
+    document.getElementById("cfo-opinion").innerText =
+        "CFO is analyzing the financial impact...";
+
+    document.getElementById("sales-opinion").innerText =
+        "Sales Head is analyzing the market impact...";
+
+    document.getElementById("hr-opinion").innerText =
+        "HR Head is analyzing the workforce impact...";
+
+    document.getElementById("final-result").innerText =
+        "Board is comparing all executive opinions...";
+
+
+    try {
+
+
+        /* SEND QUESTION TO FLASK */
+
+        const response = await fetch(
+            "/ai-debate",
+            {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    question: question
+
+                })
+
+            }
+        );
+
+
+        const data =
+            await response.json();
+
+
+        /* ERROR */
+
+        if (!data.success) {
+
+            alert(
+                data.error ||
+                "Something went wrong."
+            );
+
+            return;
+
+        }
+
+
+        /* CEO */
+
+        document.getElementById(
+            "ceo-opinion"
+        ).innerText =
+            data.ceo;
+
+
+        /* CFO */
+
+        document.getElementById(
+            "cfo-opinion"
+        ).innerText =
+            data.cfo;
+
+
+        /* SALES */
+
+        document.getElementById(
+            "sales-opinion"
+        ).innerText =
+            data.sales;
+
+
+        /* HR */
+
+        document.getElementById(
+            "hr-opinion"
+        ).innerText =
+            data.hr;
+
+
+        /* FINAL DECISION */
+
+        document.getElementById(
+            "final-result"
+        ).innerText =
+            data.final;
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        document.getElementById(
+            "final-result"
+        ).innerText =
+            "Unable to connect to Ollama. Please make sure Ollama is running.";
+
+    }
+
+
+    /* RESTORE BUTTON */
+
+    button.disabled = false;
+
+    button.innerText =
+        "Start AI Debate →";
+
+}
+
+</script>
+
 
 </body>
 

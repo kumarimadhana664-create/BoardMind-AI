@@ -13,17 +13,186 @@
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
 
+    <style>
+
+        /* ==============================
+           COMPANY OVERVIEW
+           ============================== */
+
+        .company-overview {
+
+            background: linear-gradient(
+                135deg,
+                #ffffff,
+                #fff7f9
+            );
+
+            border: 1px solid #f0dfe4;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            box-shadow:
+                0 5px 18px rgba(
+                    128,
+                    0,
+                    32,
+                    0.06
+                );
+
+        }
+
+
+        .company-info h2 {
+
+            margin: 0 0 8px;
+
+            color: #5c0018;
+
+        }
+
+
+        .company-info p {
+
+            margin: 0;
+
+            color: #666;
+
+        }
+
+
+        .company-actions {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .company-btn {
+
+            text-decoration: none;
+
+            padding: 11px 17px;
+
+            border-radius: 9px;
+
+            font-weight: 600;
+
+            border: 1px solid #800020;
+
+            color: #800020;
+
+            background: white;
+
+            transition: 0.2s;
+
+        }
+
+
+        .company-btn:hover {
+
+            background: #800020;
+
+            color: white;
+
+        }
+
+
+        .company-btn.primary {
+
+            background: #800020;
+
+            color: white;
+
+        }
+
+
+        .company-btn.primary:hover {
+
+            background: #5c0018;
+
+        }
+
+
+        /* ==============================
+           SECTION TITLE
+           ============================== */
+
+        .section-heading {
+
+            margin: 25px 0 15px;
+
+        }
+
+
+        .section-heading h2 {
+
+            margin: 0 0 5px;
+
+        }
+
+
+        .section-heading p {
+
+            margin: 0;
+
+            color: #777;
+
+        }
+
+
+        /* ==============================
+           PREDICTION
+           ============================== */
+
+        .prediction-box {
+
+            margin-top: 30px;
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .company-overview {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
 <body>
 
+
 <div class="dashboard">
 
 
-    <!-- =========================================
+    <!-- ==================================================
          SIDEBAR
-         ========================================= -->
+         ================================================== -->
 
     <aside class="sidebar">
 
@@ -31,47 +200,143 @@
 
         <ul>
 
-            <!-- ACTIVE PAGE -->
+
+            <!-- DASHBOARD -->
+
             <li class="active">
+
                 <a href="/dashboard">
-                     Dashboard
+                    🏠 Dashboard
                 </a>
+
             </li>
 
+
+            <!-- DIGITAL TWIN -->
+
             <li>
+
                 <a href="/digital-twin">
-                     Digital Twin
+                    🏢 Digital Twin
                 </a>
+
             </li>
 
+
+            <!-- BOARDROOM -->
+
             <li>
+
                 <a href="/boardroom">
-                     AI Boardroom
+                    🤖 AI Boardroom
                 </a>
+
             </li>
 
+
+            <!-- AI AGENTS -->
+
+            <li class="agents-menu">
+
+                <a href="#"
+                   onclick="toggleAgents(event)">
+
+                    <span>
+                        🧠 AI Agents
+                    </span>
+
+                    <span id="agent-arrow">
+                        ▸
+                    </span>
+
+                </a>
+
+
+                <ul id="agent-submenu"
+                    class="agent-submenu">
+
+
+                    <li>
+
+                        <a href="/ceo">
+                            👔 CEO
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="/cfo">
+                            💰 CFO
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="/sales">
+                            📈 Sales Head
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="/hr">
+                            👥 HR Head
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- DEBATE -->
+
             <li>
+
                 <a href="/debate">
-                     Debate
+                    🗣 Debate
                 </a>
+
             </li>
 
+
+            <!-- ANALYTICS -->
+
             <li>
+
                 <a href="/analytics">
-                     Analytics
+                    📊 Analytics
                 </a>
+
             </li>
 
+
+            <!-- REPORTS -->
+
             <li>
+
                 <a href="/reports">
-                     Reports
+                    📄 Reports
                 </a>
+
             </li>
 
+
+            <!-- SETTINGS -->
+
             <li>
+
                 <a href="/settings">
-                     Settings
+                    ⚙ Settings
                 </a>
+
             </li>
 
         </ul>
@@ -80,14 +345,14 @@
 
 
 
-    <!-- =========================================
+    <!-- ==================================================
          MAIN CONTENT
-         ========================================= -->
+         ================================================== -->
 
     <main class="content">
 
 
-        <!-- PAGE HEADER -->
+        <!-- HEADER -->
 
         <div class="dashboard-header">
 
@@ -97,14 +362,17 @@
                     BUSINESS INTELLIGENCE
                 </p>
 
-                <h1>Business Dashboard</h1>
+                <h1>
+                    Business Dashboard
+                </h1>
 
                 <p class="subtitle">
-                    Monitor your business performance and predict
-                    future sales using AI.
+                    Monitor company performance and
+                    make intelligent decisions using AI.
                 </p>
 
             </div>
+
 
             <div class="status">
 
@@ -118,9 +386,73 @@
 
 
 
-        <!-- =========================================
-             BUSINESS CARDS
-             ========================================= -->
+        <!-- ==================================================
+             COMPANY OVERVIEW
+             ================================================== -->
+
+        <div class="company-overview">
+
+            <div class="company-info">
+
+                <p class="small-title">
+                    COMPANY PROFILE
+                </p>
+
+                <h2>
+                    Your Business Intelligence Hub
+                </h2>
+
+                <p>
+                    Company information, performance data
+                    and AI insights are managed through
+                    BoardMind AI.
+                </p>
+
+            </div>
+
+
+            <div class="company-actions">
+
+                <a
+                    href="/digital-twin"
+                    class="company-btn">
+
+                    🏢 View Digital Twin
+
+                </a>
+
+
+                <a
+                    href="/boardroom"
+                    class="company-btn primary">
+
+                    🤖 Open AI Boardroom
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             BUSINESS METRICS
+             ================================================== -->
+
+        <div class="section-heading">
+
+            <h2>
+                Company Performance
+            </h2>
+
+            <p>
+                Current business information stored in
+                your BoardMind workspace.
+            </p>
+
+        </div>
+
 
         <div class="cards">
 
@@ -133,14 +465,15 @@
                     💰
                 </div>
 
-                <h3>Revenue</h3>
+                <h3>
+                    Revenue
+                </h3>
 
                 <h2>
                     {{ data.revenue }}
                 </h2>
 
             </div>
-
 
 
             <!-- PROFIT -->
@@ -151,14 +484,15 @@
                     📈
                 </div>
 
-                <h3>Profit</h3>
+                <h3>
+                    Profit
+                </h3>
 
                 <h2>
                     {{ data.profit }}
                 </h2>
 
             </div>
-
 
 
             <!-- SALES -->
@@ -169,14 +503,15 @@
                     🛒
                 </div>
 
-                <h3>Sales</h3>
+                <h3>
+                    Sales
+                </h3>
 
                 <h2>
                     {{ data.sales }}
                 </h2>
 
             </div>
-
 
 
             <!-- EMPLOYEES -->
@@ -187,14 +522,15 @@
                     👥
                 </div>
 
-                <h3>Employees</h3>
+                <h3>
+                    Employees
+                </h3>
 
                 <h2>
                     {{ data.employees }}
                 </h2>
 
             </div>
-
 
 
             <!-- INVENTORY -->
@@ -205,14 +541,15 @@
                     📦
                 </div>
 
-                <h3>Inventory</h3>
+                <h3>
+                    Inventory
+                </h3>
 
                 <h2>
                     {{ data.inventory }}
                 </h2>
 
             </div>
-
 
 
             <!-- RISK -->
@@ -223,7 +560,9 @@
                     ⚠️
                 </div>
 
-                <h3>Risk Score</h3>
+                <h3>
+                    Risk Score
+                </h3>
 
                 <h2>
                     {{ data.risk_score }}
@@ -236,31 +575,47 @@
 
 
 
-        <!-- =========================================
+        <!-- ==================================================
+             AI DECISION AREA
+             ================================================== -->
+
+        <div class="section-heading">
+
+            <h2>
+                AI Decision Tools
+            </h2>
+
+            <p>
+                Use machine learning and AI agents to
+                support business decisions.
+            </p>
+
+        </div>
+
+
+
+        <!-- ==================================================
              SALES PREDICTION
-             ========================================= -->
+             ================================================== -->
 
         <div class="prediction-box">
 
 
             <div class="prediction-header">
 
-                <div>
+                <p class="small-title">
+                    MACHINE LEARNING
+                </p>
 
-                    <p class="small-title">
-                        MACHINE LEARNING
-                    </p>
+                <h2>
+                    📈 Sales Prediction
+                </h2>
 
-                    <h2>
-                        📈 Sales Prediction
-                    </h2>
-
-                    <p>
-                        Enter customer and product information
-                        to predict sales.
-                    </p>
-
-                </div>
+                <p>
+                    Enter customer and product information
+                    to predict sales using the trained
+                    machine learning model.
+                </p>
 
             </div>
 
@@ -308,7 +663,7 @@
 
 
 
-            <!-- PRODUCT CATEGORY -->
+            <!-- PRODUCT -->
 
             <div class="form-group">
 
@@ -372,7 +727,7 @@
 
 
 
-            <!-- PREDICT BUTTON -->
+            <!-- BUTTON -->
 
             <button
                 type="button"
@@ -409,31 +764,81 @@
 
 
 
-<!-- =========================================
+<!-- ==================================================
      JAVASCRIPT
-     ========================================= -->
+     ================================================== -->
 
 <script>
 
+
+/* =====================================================
+   AI AGENTS SIDEBAR
+   ===================================================== */
+
+function toggleAgents(event) {
+
+    event.preventDefault();
+
+
+    const submenu =
+        document.getElementById(
+            "agent-submenu"
+        );
+
+
+    const arrow =
+        document.getElementById(
+            "agent-arrow"
+        );
+
+
+    submenu.classList.toggle("show");
+
+    arrow.classList.toggle("open");
+
+}
+
+
+
+/* =====================================================
+   SALES PREDICTION
+   ===================================================== */
+
 async function predictSales() {
 
+
     const age =
-        document.getElementById("age").value;
+        document.getElementById(
+            "age"
+        ).value;
+
 
     const gender =
-        document.getElementById("gender").value;
+        document.getElementById(
+            "gender"
+        ).value;
+
 
     const category =
-        document.getElementById("category").value;
+        document.getElementById(
+            "category"
+        ).value;
+
 
     const quantity =
-        document.getElementById("quantity").value;
+        document.getElementById(
+            "quantity"
+        ).value;
+
 
     const price =
-        document.getElementById("price").value;
+        document.getElementById(
+            "price"
+        ).value;
 
 
-    /* CHECK INPUTS */
+
+    /* CHECK INPUT */
 
     if (
         age === "" ||
@@ -441,7 +846,9 @@ async function predictSales() {
         price === ""
     ) {
 
-        document.getElementById("result").innerText =
+        document.getElementById(
+            "result"
+        ).innerText =
             "Please fill all fields.";
 
         return;
@@ -449,60 +856,84 @@ async function predictSales() {
     }
 
 
-    /* SHOW LOADING */
 
-    document.getElementById("result").innerText =
+    /* LOADING */
+
+    document.getElementById(
+        "result"
+    ).innerText =
         "Predicting...";
+
 
 
     try {
 
-        const response = await fetch(
-            "/predict-sales",
-            {
 
-                method: "POST",
+        const response =
+            await fetch(
+                "/predict-sales",
+                {
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                    method: "POST",
 
-                body: JSON.stringify({
+                    headers: {
 
-                    Age: Number(age),
+                        "Content-Type":
+                            "application/json"
 
-                    Gender: gender,
+                    },
 
-                    "Product Category": category,
+                    body: JSON.stringify({
 
-                    Quantity: Number(quantity),
+                        Age:
+                            Number(age),
 
-                    "Price per Unit": Number(price)
+                        Gender:
+                            gender,
 
-                })
+                        "Product Category":
+                            category,
 
-            }
-        );
+                        Quantity:
+                            Number(quantity),
+
+                        "Price per Unit":
+                            Number(price)
+
+                    })
+
+                }
+            );
 
 
-        const data = await response.json();
+
+        const data =
+            await response.json();
+
 
 
         if (!response.ok) {
 
             throw new Error(
-                data.error || "Prediction failed"
+                data.error ||
+                "Prediction failed"
             );
 
         }
 
 
-        /* SHOW RESULT */
 
-        document.getElementById("result").innerText =
-            "₹" + Number(
+        document.getElementById(
+            "result"
+        ).innerText =
+
+            "₹" +
+
+            Number(
                 data.predicted_sales
-            ).toLocaleString("en-IN");
+            ).toLocaleString(
+                "en-IN"
+            );
 
 
     }
@@ -511,12 +942,16 @@ async function predictSales() {
 
         console.error(error);
 
-        document.getElementById("result").innerText =
-            "Prediction failed";
+
+        document.getElementById(
+            "result"
+        ).innerText =
+            "Prediction failed.";
 
     }
 
 }
+
 
 </script>
 
