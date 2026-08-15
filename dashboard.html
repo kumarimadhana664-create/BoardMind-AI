@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | AI Boardroom</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        /* ==============================
+           COMPANY OVERVIEW
+           ============================== */
+
+        .company-overview {
+
+            background: linear-gradient(
+                135deg,
+                #ffffff,
+                #fff7f9
+            );
+
+            border: 1px solid #f0dfe4;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            box-shadow:
+                0 5px 18px rgba(
+                    128,
+                    0,
+                    32,
+                    0.06
+                );
+
+        }
+
+
+        .company-info h2 {
+
+            margin: 0 0 8px;
+
+            color: #5c0018;
+
+        }
+
+
+        .company-info p {
+
+            margin: 0;
+
+            color: #666;
+
+        }
+
+
+        .company-actions {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .company-btn {
+
+            text-decoration: none;
+
+            padding: 11px 17px;
+
+            border-radius: 9px;
+
+            font-weight: 600;
+
+            border: 1px solid #800020;
+
+            color: #800020;
+
+            background: white;
+
+            transition: 0.2s;
+
+        }
+
+
+        .company-btn:hover {
+
+            background: #800020;
+
+            color: white;
+
+        }
+
+
+        .company-btn.primary {
+
+            background: #800020;
+
+            color: white;
+
+        }
+
+
+        .company-btn.primary:hover {
+
+            background: #5c0018;
+
+        }
+
+
+        /* ==============================
+           SECTION TITLE
+           ============================== */
+
+        .section-heading {
+
+            margin: 25px 0 15px;
+
+        }
+
+
+        .section-heading h2 {
+
+            margin: 0 0 5px;
+
+        }
+
+
+        .section-heading p {
+
+            margin: 0;
+
+            color: #777;
+
+        }
+
+
+        /* ==============================
+           PREDICTION
+           ============================== */
+
+        .prediction-box {
+
+            margin-top: 30px;
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .company-overview {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- ==================================================
+         SIDEBAR
+         ================================================== -->
+
+    <aside class="sidebar">
+
+        <h2>AI Boardroom</h2>
+
+        <ul>
+
+
+            <!-- DASHBOARD -->
+
+            <li class="active">
+
+                <a href="/dashboard">
+                    🏠 Dashboard
+                </a>
+
+            </li>
+
+
+            <!-- DIGITAL TWIN -->
+
+            <li>
+
+                <a href="/digital-twin">
+                    🏢 Digital Twin
+                </a>
+
+            </li>
+
+
+            <!-- BOARDROOM -->
+
+            <li>
+
+                <a href="/boardroom">
+                    🤖 AI Boardroom
+                </a>
+
+            </li>
+
+
+            <!-- AI AGENTS -->
+
+            <li class="agents-menu">
+
+                <a href="#"
+                   onclick="toggleAgents(event)">
+
+                    <span>
+                        🧠 AI Agents
+                    </span>
+
+                    <span id="agent-arrow">
+                        ▸
+                    </span>
+
+                </a>
+
+
+                <ul id="agent-submenu"
+                    class="agent-submenu">
+
+
+                    <li>
+
+                        <a href="/ceo">
+                            👔 CEO
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="/cfo">
+                            💰 CFO
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="/sales">
+                            📈 Sales Head
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="/hr">
+                            👥 HR Head
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- DEBATE -->
+
+            <li>
+
+                <a href="/debate">
+                    🗣 Debate
+                </a>
+
+            </li>
+
+
+            <!-- ANALYTICS -->
+
+            <li>
+
+                <a href="/analytics">
+                    📊 Analytics
+                </a>
+
+            </li>
+
+
+            <!-- REPORTS -->
+
+            <li>
+
+                <a href="/reports">
+                    📄 Reports
+                </a>
+
+            </li>
+
+
+            <!-- SETTINGS -->
+
+            <li>
+
+                <a href="/settings">
+                    ⚙ Settings
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         MAIN CONTENT
+         ================================================== -->
+
+    <main class="content">
+
+
+        <!-- HEADER -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <p class="small-title">
+                    BUSINESS INTELLIGENCE
+                </p>
+
+                <h1>
+                    Business Dashboard
+                </h1>
+
+                <p class="subtitle">
+                    Monitor company performance and
+                    make intelligent decisions using AI.
+                </p>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                AI SYSTEM ONLINE
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             COMPANY OVERVIEW
+             ================================================== -->
+
+        <div class="company-overview">
+
+            <div class="company-info">
+
+                <p class="small-title">
+                    COMPANY PROFILE
+                </p>
+
+                <h2>
+                    Your Business Intelligence Hub
+                </h2>
+
+                <p>
+                    Company information, performance data
+                    and AI insights are managed through
+                    BoardMind AI.
+                </p>
+
+            </div>
+
+
+            <div class="company-actions">
+
+                <a
+                    href="/digital-twin"
+                    class="company-btn">
+
+                    🏢 View Digital Twin
+
+                </a>
+
+
+                <a
+                    href="/boardroom"
+                    class="company-btn primary">
+
+                    🤖 Open AI Boardroom
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             BUSINESS METRICS
+             ================================================== -->
+
+        <div class="section-heading">
+
+            <h2>
+                Company Performance
+            </h2>
+
+            <p>
+                Current business information stored in
+                your BoardMind workspace.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <!-- REVENUE -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Revenue
+                </h3>
+
+                <h2>
+                    {{ data.revenue }}
+                </h2>
+
+            </div>
+
+
+            <!-- PROFIT -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📈
+                </div>
+
+                <h3>
+                    Profit
+                </h3>
+
+                <h2>
+                    {{ data.profit }}
+                </h2>
+
+            </div>
+
+
+            <!-- SALES -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🛒
+                </div>
+
+                <h3>
+                    Sales
+                </h3>
+
+                <h2>
+                    {{ data.sales }}
+                </h2>
+
+            </div>
+
+
+            <!-- EMPLOYEES -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    👥
+                </div>
+
+                <h3>
+                    Employees
+                </h3>
+
+                <h2>
+                    {{ data.employees }}
+                </h2>
+
+            </div>
+
+
+            <!-- INVENTORY -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📦
+                </div>
+
+                <h3>
+                    Inventory
+                </h3>
+
+                <h2>
+                    {{ data.inventory }}
+                </h2>
+
+            </div>
+
+
+            <!-- RISK -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Risk Score
+                </h3>
+
+                <h2>
+                    {{ data.risk_score }}
+                </h2>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             AI DECISION AREA
+             ================================================== -->
+
+        <div class="section-heading">
+
+            <h2>
+                AI Decision Tools
+            </h2>
+
+            <p>
+                Use machine learning and AI agents to
+                support business decisions.
+            </p>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             SALES PREDICTION
+             ================================================== -->
+
+        <div class="prediction-box">
+
+
+            <div class="prediction-header">
+
+                <p class="small-title">
+                    MACHINE LEARNING
+                </p>
+
+                <h2>
+                    📈 Sales Prediction
+                </h2>
+
+                <p>
+                    Enter customer and product information
+                    to predict sales using the trained
+                    machine learning model.
+                </p>
+
+            </div>
+
+
+
+            <!-- AGE -->
+
+            <div class="form-group">
+
+                <label for="age">
+                    Age
+                </label>
+
+                <input
+                    type="number"
+                    id="age"
+                    placeholder="Enter age"
+                >
+
+            </div>
+
+
+
+            <!-- GENDER -->
+
+            <div class="form-group">
+
+                <label for="gender">
+                    Gender
+                </label>
+
+                <select id="gender">
+
+                    <option value="Male">
+                        Male
+                    </option>
+
+                    <option value="Female">
+                        Female
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- PRODUCT -->
+
+            <div class="form-group">
+
+                <label for="category">
+                    Product Category
+                </label>
+
+                <select id="category">
+
+                    <option value="Beauty">
+                        Beauty
+                    </option>
+
+                    <option value="Clothing">
+                        Clothing
+                    </option>
+
+                    <option value="Electronics">
+                        Electronics
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- QUANTITY -->
+
+            <div class="form-group">
+
+                <label for="quantity">
+                    Quantity
+                </label>
+
+                <input
+                    type="number"
+                    id="quantity"
+                    placeholder="Enter quantity"
+                >
+
+            </div>
+
+
+
+            <!-- PRICE -->
+
+            <div class="form-group">
+
+                <label for="price">
+                    Price Per Unit
+                </label>
+
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="Enter price"
+                >
+
+            </div>
+
+
+
+            <!-- BUTTON -->
+
+            <button
+                type="button"
+                class="predict-btn"
+                onclick="predictSales()">
+
+                📊 Predict Sales
+
+            </button>
+
+
+
+            <!-- RESULT -->
+
+            <div class="prediction-result">
+
+                <p>
+                    Predicted Sales
+                </p>
+
+                <h2 id="result">
+                    —
+                </h2>
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+     ================================================== -->
+
+<script>
+
+
+/* =====================================================
+   AI AGENTS SIDEBAR
+   ===================================================== */
+
+function toggleAgents(event) {
+
+    event.preventDefault();
+
+
+    const submenu =
+        document.getElementById(
+            "agent-submenu"
+        );
+
+
+    const arrow =
+        document.getElementById(
+            "agent-arrow"
+        );
+
+
+    submenu.classList.toggle("show");
+
+    arrow.classList.toggle("open");
+
+}
+
+
+
+/* =====================================================
+   SALES PREDICTION
+   ===================================================== */
+
+async function predictSales() {
+
+
+    const age =
+        document.getElementById(
+            "age"
+        ).value;
+
+
+    const gender =
+        document.getElementById(
+            "gender"
+        ).value;
+
+
+    const category =
+        document.getElementById(
+            "category"
+        ).value;
+
+
+    const quantity =
+        document.getElementById(
+            "quantity"
+        ).value;
+
+
+    const price =
+        document.getElementById(
+            "price"
+        ).value;
+
+
+
+    /* CHECK INPUT */
+
+    if (
+        age === "" ||
+        quantity === "" ||
+        price === ""
+    ) {
+
+        document.getElementById(
+            "result"
+        ).innerText =
+            "Please fill all fields.";
+
+        return;
+
+    }
+
+
+
+    /* LOADING */
+
+    document.getElementById(
+        "result"
+    ).innerText =
+        "Predicting...";
+
+
+
+    try {
+
+
+        const response =
+            await fetch(
+                "/predict-sales",
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        Age:
+                            Number(age),
+
+                        Gender:
+                            gender,
+
+                        "Product Category":
+                            category,
+
+                        Quantity:
+                            Number(quantity),
+
+                        "Price per Unit":
+                            Number(price)
+
+                    })
+
+                }
+            );
+
+
+
+        const data =
+            await response.json();
+
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Prediction failed"
+            );
+
+        }
+
+
+
+        document.getElementById(
+            "result"
+        ).innerText =
+
+            "₹" +
+
+            Number(
+                data.predicted_sales
+            ).toLocaleString(
+                "en-IN"
+            );
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+
+        document.getElementById(
+            "result"
+        ).innerText =
+            "Prediction failed.";
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Boardroom | BoardMind AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <h2>AI Boardroom</h2>
+
+        <ul>
+
+            <li>
+                <a href="/dashboard">
+                    🏠 Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/digital-twin">
+                    🏢 Digital Twin
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="/boardroom">
+                    🤖 AI Boardroom
+                </a>
+            </li>
+
+
+            <!-- AI AGENTS -->
+
+            <li class="agents-menu">
+
+                <a href="#">
+                    🧠 AI Agents ▾
+                </a>
+
+                <ul class="agent-submenu show">
+
+                    <li>
+                        <a href="/ceo">
+                            👔 CEO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/cfo">
+                            💰 CFO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/sales">
+                            📈 Sales Head
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/hr">
+                            👥 HR Head
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <li>
+                <a href="/debate">
+                    🗣 Debate
+                </a>
+            </li>
+
+            <li>
+                <a href="/analytics">
+                    📊 Analytics
+                </a>
+            </li>
+
+            <li>
+                <a href="/reports">
+                    📄 Reports
+                </a>
+            </li>
+
+            <li>
+                <a href="/settings">
+                    ⚙ Settings
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="content">
+
+
+        <!-- HEADER -->
+
+        <div class="boardroom-header">
+
+            <div>
+
+                <p class="small-title">
+                    INTELLIGENT DECISION SYSTEM
+                </p>
+
+                <h1>
+                    AI Boardroom
+                </h1>
+
+                <p class="subtitle">
+                    Meet your AI executive team and make
+                    smarter business decisions.
+                </p>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                AI SYSTEM ONLINE
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= AGENT CARDS ================= -->
+
+        <div class="boardroom-grid">
+
+
+            <!-- CEO -->
+
+            <div class="agent-card">
+
+                <div class="agent-icon">
+                    👔
+                </div>
+
+                <div class="agent-status">
+                    ● ONLINE
+                </div>
+
+                <h2>
+                    CEO
+                </h2>
+
+                <h4>
+                    Chief Executive Officer
+                </h4>
+
+                <p>
+                    Focuses on overall business strategy,
+                    growth, opportunities and major
+                    business decisions.
+                </p>
+
+
+                <a href="/ceo"
+                   class="debate-btn">
+
+                    Consult CEO →
+
+                </a>
+
+            </div>
+
+
+            <!-- CFO -->
+
+            <div class="agent-card">
+
+                <div class="agent-icon">
+                    💰
+                </div>
+
+                <div class="agent-status">
+                    ● ONLINE
+                </div>
+
+                <h2>
+                    CFO
+                </h2>
+
+                <h4>
+                    Chief Financial Officer
+                </h4>
+
+                <p>
+                    Analyzes revenue, costs, profit,
+                    budgets, investments and financial
+                    risks.
+                </p>
+
+
+                <a href="/cfo"
+                   class="debate-btn">
+
+                    Consult CFO →
+
+                </a>
+
+            </div>
+
+
+            <!-- SALES -->
+
+            <div class="agent-card">
+
+                <div class="agent-icon">
+                    📈
+                </div>
+
+                <div class="agent-status">
+                    ● ONLINE
+                </div>
+
+                <h2>
+                    Sales Head
+                </h2>
+
+                <h4>
+                    Chief Sales Officer
+                </h4>
+
+                <p>
+                    Analyzes sales performance,
+                    customers, market opportunities
+                    and revenue growth.
+                </p>
+
+
+                <a href="/sales"
+                   class="debate-btn">
+
+                    Consult Sales →
+
+                </a>
+
+            </div>
+
+
+            <!-- HR -->
+
+            <div class="agent-card">
+
+                <div class="agent-icon">
+                    👥
+                </div>
+
+                <div class="agent-status">
+                    ● ONLINE
+                </div>
+
+                <h2>
+                    HR Head
+                </h2>
+
+                <h4>
+                    Chief People Officer
+                </h4>
+
+                <p>
+                    Analyzes employees, recruitment,
+                    workforce planning and organizational
+                    performance.
+                </p>
+
+
+                <a href="/hr"
+                   class="debate-btn">
+
+                    Consult HR →
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= BOARDROOM ACTION ================= -->
+
+        <div class="boardroom-action">
+
+            <div>
+
+                <p class="small-title">
+                    MULTI-AGENT DECISION
+                </p>
+
+                <h2>
+                    Need a collective decision?
+                </h2>
+
+                <p>
+                    Bring all four AI executives together
+                    and let them analyze the same business
+                    question from different perspectives.
+                </p>
+
+            </div>
+
+
+            <a href="/debate"
+               class="main-debate-btn">
+
+                Start Boardroom Debate →
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>HR Head Consultation | AI Boardroom</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+
+    <!-- ========================================= -->
+    <!-- SIDEBAR -->
+    <!-- ========================================= -->
+
+    <aside class="sidebar">
+
+        <h2>AI Boardroom</h2>
+
+        <ul>
+
+            <li>
+                <a href="/dashboard">
+                    🏠 Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/digital-twin">
+                    🏢 Digital Twin
+                </a>
+            </li>
+
+            <li>
+                <a href="/boardroom">
+                    🤖 AI Boardroom
+                </a>
+            </li>
+
+
+            <!-- AI AGENTS -->
+
+            <li class="agents-menu">
+
+                <a href="#">
+                    🧠 AI Agents ▾
+                </a>
+
+
+                <ul class="agent-submenu show">
+
+                    <li>
+                        <a href="/ceo">
+                            👔 CEO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/cfo">
+                            💰 CFO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/sales">
+                            📈 Sales Head
+                        </a>
+                    </li>
+
+                    <li class="selected-agent">
+                        <a href="/hr">
+                            👥 HR Head
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <li>
+                <a href="/debate">
+                    🗣 Debate
+                </a>
+            </li>
+
+            <li>
+                <a href="/analytics">
+                    📊 Analytics
+                </a>
+            </li>
+
+            <li>
+                <a href="/reports">
+                    📄 Reports
+                </a>
+            </li>
+
+            <li>
+                <a href="/settings">
+                    ⚙ Settings
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- ========================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================================= -->
+
+    <main class="content">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="agent-page-header">
+
+            <div>
+
+                <span class="agent-label">
+                    AI EXECUTIVE
+                </span>
+
+                <h1>
+                    👥 HR Head Consultation
+                </h1>
+
+                <p>
+                    Get AI-powered recommendations about
+                    employees, hiring, workforce planning
+                    and organizational development.
+                </p>
+
+            </div>
+
+
+            <div class="agent-status">
+
+                <span></span>
+
+                AI ONLINE
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ========================================= -->
+        <!-- HR PROFILE -->
+        <!-- ========================================= -->
+
+        <div class="agent-profile">
+
+            <div class="agent-avatar hr-avatar">
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Chief Human Resources Officer
+                </h2>
+
+                <p>
+                    People • Hiring • Workforce •
+                    Performance
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ========================================= -->
+        <!-- CONSULTATION -->
+        <!-- ========================================= -->
+
+        <div class="consultation-box">
+
+
+            <div class="consultation-title">
+
+                <h2>
+                    Ask the HR Head
+                </h2>
+
+                <p>
+                    Describe your workforce situation
+                    or employee-related business decision.
+                </p>
+
+            </div>
+
+
+
+            <!-- QUESTION -->
+
+            <textarea
+                id="question"
+                placeholder="Example: How many employees should we hire for our expansion?"
+            ></textarea>
+
+
+
+            <!-- ================================= -->
+            <!-- SUGGESTIONS -->
+            <!-- ================================= -->
+
+            <div class="suggestions">
+
+
+                <button
+                    onclick="setQuestion(
+                        'How many employees should we hire for our expansion?'
+                    )">
+
+                    Hiring Plan
+
+                </button>
+
+
+
+                <button
+                    onclick="setQuestion(
+                        'How can we improve employee performance?'
+                    )">
+
+                    Employee Performance
+
+                </button>
+
+
+
+                <button
+                    onclick="setQuestion(
+                        'How should we plan our workforce?'
+                    )">
+
+                    Workforce Planning
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- ================================= -->
+            <!-- ASK BUTTON -->
+            <!-- ================================= -->
+
+            <button
+                class="ask-agent-btn"
+                onclick="askAgent()">
+
+                Ask HR Head →
+
+            </button>
+
+
+
+            <!-- ================================= -->
+            <!-- AI RESPONSE -->
+            <!-- ================================= -->
+
+            <div class="ai-response">
+
+
+                <div class="response-header">
+
+                    <span>
+                        👥 HR Recommendation
+                    </span>
+
+
+                    <span class="response-status">
+                        AI
+                    </span>
+
+                </div>
+
+
+
+                <div id="response">
+
+                    <p class="waiting">
+
+                        Your HR recommendation
+                        will appear here.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================= -->
+
+<script>
+
+
+/* =========================================
+   SET SUGGESTION QUESTION
+   ========================================= */
+
+function setQuestion(question) {
+
+    document.getElementById("question").value =
+        question;
+
+}
+
+
+
+/* =========================================
+   ASK HR HEAD
+   ========================================= */
+
+async function askAgent() {
+
+
+    const question =
+        document.getElementById("question")
+        .value
+        .trim();
+
+
+    const response =
+        document.getElementById("response");
+
+
+
+    /* EMPTY QUESTION */
+
+    if (question === "") {
+
+        response.innerHTML =
+            "<p>Please enter an HR question.</p>";
+
+        return;
+
+    }
+
+
+
+    /* LOADING */
+
+    response.innerHTML =
+        "<p>👥 HR AI is analyzing your question...</p>";
+
+
+
+    try {
+
+
+        /* SEND REQUEST TO FLASK */
+
+        const result =
+            await fetch("/agent-consult", {
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json"
+
+                },
+
+                body: JSON.stringify({
+
+                    agent: "hr",
+
+                    question: question
+
+                })
+
+            });
+
+
+
+        /* GET RESPONSE */
+
+        const data =
+            await result.json();
+
+
+
+        /* CHECK ERROR */
+
+        if (!result.ok || !data.success) {
+
+            response.innerHTML =
+                `<p>❌ ${
+                    data.error ||
+                    "Something went wrong."
+                }</p>`;
+
+            return;
+
+        }
+
+
+
+        /* DISPLAY AI RESPONSE */
+
+        response.innerHTML =
+            `<p>${
+                formatResponse(data.response)
+            }</p>`;
+
+
+    }
+
+
+    catch (error) {
+
+
+        console.error(
+            "HR AI error:",
+            error
+        );
+
+
+        response.innerHTML =
+            "<p>❌ Unable to connect to BoardMind AI.</p>";
+
+    }
+
+}
+
+
+
+/* =========================================
+   FORMAT AI RESPONSE
+   ========================================= */
+
+function formatResponse(text) {
+
+    return text
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /\n/g,
+            "<br>"
+        );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

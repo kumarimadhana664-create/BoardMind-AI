@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Twin | BoardMind AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        /* =====================================
+           DIGITAL TWIN PAGE
+           ===================================== */
+
+        .twin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            gap: 20px;
+        }
+
+        .twin-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .twin-header p {
+            color: #666;
+            margin: 0;
+        }
+
+        .twin-status {
+            background: #fff8fa;
+            border: 1px solid #800020;
+            color: #800020;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .twin-status span {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            background: #800020;
+            border-radius: 50%;
+            margin-right: 7px;
+        }
+
+
+        /* =====================================
+           COMPANY OVERVIEW
+           ===================================== */
+
+        .company-overview {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .overview-card {
+
+            background: #ffffff;
+
+            border-radius: 14px;
+
+            padding: 20px;
+
+            border: 1px solid #f0dfe4;
+
+            box-shadow:
+                0 5px 18px rgba(128, 0, 32, 0.06);
+
+        }
+
+
+        .overview-card h3 {
+
+            margin: 0 0 8px;
+
+            font-size: 14px;
+
+            color: #777;
+
+        }
+
+
+        .overview-value {
+
+            font-size: 25px;
+
+            font-weight: 700;
+
+            color: #800020;
+
+        }
+
+
+        /* =====================================
+           DIGITAL TWIN CENTER
+           ===================================== */
+
+        .twin-center {
+
+            background: linear-gradient(
+                135deg,
+                #fff8fa,
+                #ffffff
+            );
+
+            border: 1px solid #f0dfe4;
+
+            border-radius: 18px;
+
+            padding: 28px;
+
+            margin-bottom: 30px;
+
+            text-align: center;
+
+        }
+
+
+        .twin-icon {
+
+            width: 80px;
+
+            height: 80px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background: #800020;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 35px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(128, 0, 32, 0.20);
+
+        }
+
+
+        .twin-center h2 {
+
+            margin: 15px 0 5px;
+
+            color: #5c0018;
+
+        }
+
+
+        .twin-center p {
+
+            color: #666;
+
+            margin: 0;
+
+        }
+
+
+        /* =====================================
+           DEPARTMENT GRID
+           ===================================== */
+
+        .twin-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .department {
+
+            background: #ffffff;
+
+            border: 1px solid #f0dfe4;
+
+            border-radius: 16px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 6px 20px
+                rgba(128, 0, 32, 0.06);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .department:hover {
+
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(128, 0, 32, 0.12);
+
+        }
+
+
+        .department-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .department h2 {
+
+            margin: 0;
+
+            color: #5c0018;
+
+            font-size: 19px;
+
+        }
+
+
+        .department-status {
+
+            font-size: 12px;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            background: #fff8fa;
+
+            color: #800020;
+
+            font-weight: 600;
+
+        }
+
+
+        .department-info {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 10px;
+
+            padding-top: 10px;
+
+            border-top: 1px solid #f5e8eb;
+
+        }
+
+
+        .department-info span:first-child {
+
+            color: #777;
+
+            font-size: 14px;
+
+        }
+
+
+        .department-info span:last-child {
+
+            color: #800020;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+           ===================================== */
+
+        @media (max-width: 1000px) {
+
+            .company-overview {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+            .twin-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .twin-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+            .company-overview {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .twin-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- =====================================
+         SIDEBAR
+         ===================================== -->
+
+    <aside class="sidebar">
+
+        <h2>AI Boardroom</h2>
+
+
+        <ul>
+
+            <li>
+
+                <a href="/dashboard">
+                    🏠 Dashboard
+                </a>
+
+            </li>
+
+
+            <li class="selected-agent">
+
+                <a href="/digital-twin">
+                    🏢 Digital Twin
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="/boardroom">
+                    🤖 AI Boardroom
+                </a>
+
+            </li>
+
+
+            <!-- AI AGENTS -->
+
+            <li class="agents-menu">
+
+                <a href="#">
+                    🧠 AI Agents ▾
+                </a>
+
+
+                <ul class="agent-submenu show">
+
+                    <li>
+                        <a href="/ceo">
+                            👔 CEO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/cfo">
+                            💰 CFO
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/sales">
+                            📈 Sales Head
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/hr">
+                            👥 HR Head
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <li>
+
+                <a href="/debate">
+                    🗣 Debate
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="/analytics">
+                    📊 Analytics
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="/reports">
+                    📄 Reports
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="/settings">
+                    ⚙ Settings
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- =====================================
+         MAIN CONTENT
+         ===================================== -->
+
+    <main class="content">
+
+
+        <!-- HEADER -->
+
+        <div class="twin-header">
+
+            <div>
+
+                <span class="agent-label">
+                    BUSINESS INTELLIGENCE
+                </span>
+
+                <h1>
+                    Company Digital Twin
+                </h1>
+
+                <p>
+                    Real-time digital representation of
+                    your company's business operations.
+                </p>
+
+            </div>
+
+
+            <div class="twin-status">
+
+                <span></span>
+
+                DIGITAL TWIN ACTIVE
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             OVERVIEW
+             ===================================== -->
+
+        <div class="company-overview">
+
+
+            <div class="overview-card">
+
+                <h3>
+                    Revenue
+                </h3>
+
+                <div class="overview-value">
+                    ₹2.5 Cr
+                </div>
+
+            </div>
+
+
+            <div class="overview-card">
+
+                <h3>
+                    Profit
+                </h3>
+
+                <div class="overview-value">
+                    ₹80 L
+                </div>
+
+            </div>
+
+
+            <div class="overview-card">
+
+                <h3>
+                    Employees
+                </h3>
+
+                <div class="overview-value">
+                    245
+                </div>
+
+            </div>
+
+
+            <div class="overview-card">
+
+                <h3>
+                    Business Risk
+                </h3>
+
+                <div class="overview-value">
+                    Low
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =====================================
+             DIGITAL TWIN CENTER
+             ===================================== -->
+
+        <div class="twin-center">
+
+            <div class="twin-icon">
+                🏢
+            </div>
+
+
+            <h2>
+                BoardMind AI Digital Twin
+            </h2>
+
+
+            <p>
+                Monitoring the company's major
+                business departments and operational
+                indicators.
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================
+             DEPARTMENTS
+             ===================================== -->
+
+        <div class="twin-grid">
+
+
+            <!-- SALES -->
+
+            <div class="department">
+
+                <div class="department-header">
+
+                    <h2>
+                        📈 Sales
+                    </h2>
+
+                    <span class="department-status">
+                        Healthy
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Growth
+                    </span>
+
+                    <span>
+                        +15%
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Sales
+                    </span>
+
+                    <span>
+                        ₹1.2 Cr
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FINANCE -->
+
+            <div class="department">
+
+                <div class="department-header">
+
+                    <h2>
+                        💰 Finance
+                    </h2>
+
+                    <span class="department-status">
+                        Stable
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Profit
+                    </span>
+
+                    <span>
+                        ₹80 L
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Risk
+                    </span>
+
+                    <span>
+                        Low
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- HR -->
+
+            <div class="department">
+
+                <div class="department-header">
+
+                    <h2>
+                        👥 HR
+                    </h2>
+
+                    <span class="department-status">
+                        Good
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Employees
+                    </span>
+
+                    <span>
+                        245
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Hiring Need
+                    </span>
+
+                    <span>
+                        12
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MARKETING -->
+
+            <div class="department">
+
+                <div class="department-header">
+
+                    <h2>
+                        📢 Marketing
+                    </h2>
+
+                    <span class="department-status">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Campaign ROI
+                    </span>
+
+                    <span>
+                        82%
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Leads
+                    </span>
+
+                    <span>
+                        1,240
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INVENTORY -->
+
+            <div class="department">
+
+                <div class="department-header">
+
+                    <h2>
+                        📦 Inventory
+                    </h2>
+
+                    <span class="department-status">
+                        Normal
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Stock Level
+                    </span>
+
+                    <span>
+                        91%
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Low Stock Items
+                    </span>
+
+                    <span>
+                        8
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- OPERATIONS -->
+
+            <div class="department">
+
+                <div class="department-header">
+
+                    <h2>
+                        ⚙ Operations
+                    </h2>
+
+                    <span class="department-status">
+                        Running
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Efficiency
+                    </span>
+
+                    <span>
+                        94%
+                    </span>
+
+                </div>
+
+
+                <div class="department-info">
+
+                    <span>
+                        Downtime
+                    </span>
+
+                    <span>
+                        2.1%
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+</body>
+
+</html>
+
